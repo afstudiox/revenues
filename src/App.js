@@ -21,7 +21,7 @@ function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/" component={ Login } />
+        <Route exact path="/" component={ Login } />
         <Route path="/foods" component={ Foods } />
         <Route path="/drinks" component={ Drinks } />
         <Route path={ `/foods/${'...'}` } component={ Foods } />
