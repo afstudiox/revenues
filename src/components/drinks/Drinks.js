@@ -1,5 +1,5 @@
 import React from 'react';
-import HeaderSearch from '../HeaderSearch';
+import HeaderSearch from '../header/HeaderSearch';
 
 function Drinks() {
   return (
