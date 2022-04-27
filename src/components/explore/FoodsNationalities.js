@@ -1,8 +1,11 @@
 import React from 'react';
+import HeaderSearch from '../HeaderSearch';
 
 function FoodsNationalities() {
   return (
-    <div>FoodsNationalities</div>
+    <div>
+      <HeaderSearch title="Explore Nationalities" />
+    </div>
   );
 }
 

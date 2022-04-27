@@ -1,8 +1,11 @@
 import React from 'react';
+import HeaderSearch from '../HeaderSearch';
 
 function Foods() {
   return (
-    <div>Foods</div>
+    <div>
+      <HeaderSearch title="Foods" />
+    </div>
   );
 }
 
