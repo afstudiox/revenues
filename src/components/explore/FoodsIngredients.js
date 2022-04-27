@@ -1,8 +1,12 @@
 import React from 'react';
+import Footer from '../Footer';
 
 function FoodsIngredients() {
   return (
-    <div>FoodsIngredients</div>
+    <>
+      <div>FoodsIngredients</div>
+      <Footer />
+    </>
   );
 }
 
