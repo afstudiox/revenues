@@ -16,6 +16,7 @@ import FoodInProgress from './components/foods/FoodInProgress';
 import Foods from './components/foods/Foods';
 import Login from './components/Login';
 import Profile from './components/Profile';
+<<<<<<< HEAD
 
 function App() {
   return (
@@ -43,6 +44,34 @@ function App() {
         <Route path="/favorite-recipes" component={ FavoriteRecipes } />
       </Switch>
     </BrowserRouter>
+=======
+import RecipesProvider from './context/RecipesProvider';
+
+function App() {
+  return (
+    <RecipesProvider>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/" component={ Login } />
+          <Route path="/foods" component={ Foods } />
+          <Route path="/drinks" component={ Drinks } />
+          <Route path={ `/foods/${'...'}` } component={ Foods } />
+          <Route path={ `/drinks/${'...'}` } component={ Drinks } />
+          <Route path={ `/foods/${'...'}/in-progress` } component={ FoodInProgress } />
+          <Route path={ `/drinks/${'...'}/in-progress` } component={ DrinkInProgress } />
+          <Route path="/explore" component={ Explore } />
+          <Route path="/explore/foods" component={ ExploreFoods } />
+          <Route path="/explore/drinks" component={ ExploreDrinks } />
+          <Route path="/explore/foods/ingredients" component={ FoodsIngredients } />
+          <Route path="/explore/drinks/ingredients" component={ DrinksIngredients } />
+          <Route path="/explore/foods/nationalities" component={ FoodsNationalities } />
+          <Route path="/profile" component={ Profile } />
+          <Route path="/done-recipes" component={ DoneRecipes } />
+          <Route path="/favorite-recipes" component={ FavoriteRecipes } />
+        </Switch>
+      </BrowserRouter>
+    </RecipesProvider>
+>>>>>>> 41bd6d5bfb372968d3c00e74b5381b5deb0150c4
   );
 }
 
