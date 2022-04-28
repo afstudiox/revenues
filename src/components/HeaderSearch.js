@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
+import styles from '../css/Header.module.css';
 
 function HeaderSearch({ title }) {
   const [toggle, setToggle] = useState(false);
@@ -15,7 +16,7 @@ function HeaderSearch({ title }) {
 
   return (
     // Requisito 9
-    <header>
+    <header className={ styles.container }>
       <Link to="/profile">
         <input
           type="image"

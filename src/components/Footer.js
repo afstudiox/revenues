@@ -7,7 +7,10 @@ import styles from '../css/Footer.module.css';
 
 function Footer() {
   return (
-    <div data-testid="footer" className={ styles.container }>
+    <div
+      data-testid="footer"
+      className={ styles.container }
+    >
       <Link to="/drinks">
         <input
           type="image"

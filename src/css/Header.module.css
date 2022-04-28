@@ -1,0 +1,11 @@
+.container {
+  align-items: center;
+  background-color: azure;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 8px;
+  position: fixed;
+  top: 0;
+  width: 360px;
+}
