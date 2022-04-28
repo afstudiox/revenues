@@ -1,11 +1,14 @@
 import React from 'react';
+import Footer from '../Footer';
 import HeaderSearch from '../HeaderSearch';
 
 function Foods() {
   return (
-    <div>
+    <>
       <HeaderSearch title="Foods" />
-    </div>
+      <div>Foods</div>
+      <Footer />
+    </>
   );
 }
 

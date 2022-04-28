@@ -1,11 +1,13 @@
 import React from 'react';
+import Footer from '../Footer';
 import Header from '../Header';
 
 function ExploreDrinks() {
   return (
-    <div>
+    <>
       <Header title="Explore Drinks" />
-    </div>
+      <Footer />
+    </>
   );
 }
 
