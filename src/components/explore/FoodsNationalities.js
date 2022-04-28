@@ -1,10 +1,11 @@
 import React from 'react';
 import Footer from '../Footer';
+import HeaderSearch from '../HeaderSearch';
 
 function FoodsNationalities() {
   return (
     <>
-      <div>FoodsNationalities</div>
+      <HeaderSearch title="Explore Nationalities" />
       <Footer />
     </>
   );
