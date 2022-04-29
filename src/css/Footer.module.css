@@ -1,0 +1,10 @@
+.container {
+  background-color: azure;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 8px;
+  position: fixed;
+  width: 360px;
+}
