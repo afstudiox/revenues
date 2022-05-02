@@ -1,11 +1,22 @@
-import React, { useContext, useState } from 'react';
+/* eslint-disable no-alert */
+import React, { useContext, useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import RecipesContext from '../../context/RecipesContext';
 import { requestByIngredients, requestByLetter, requestByName } from '../../services/API';
 
+// eslint-disable-next-line react/prop-types
 function SearchBar() {
-  const { setRecipes } = useContext(RecipesContext);
+  const { setRecipes, recipesType, setRecipesType } = useContext(RecipesContext);
   const [selectedRadio, setSelectedRadio] = useState('');
   const [value, setValue] = useState('');
+  const { location: { pathname } } = useHistory();
+  useEffect(() => {
+    if (pathname !== '/foods') {
+      setRecipesType('cocktail');
+    } else {
+      setRecipesType('meal');
+    }
+  }, []);
 
   const getSelectedRadio = ({ target }) => {
     setSelectedRadio(target.id);
@@ -22,13 +33,13 @@ function SearchBar() {
     }
     switch (selectedRadio) {
     case 'ingredient':
-      setRecipes(await requestByIngredients(value));
+      setRecipes(await requestByIngredients(recipesType, value));
       break;
     case 'name':
-      setRecipes(await requestByName(value));
+      setRecipes(await requestByName(recipesType, value));
       break;
     case 'letter':
-      setRecipes(await requestByLetter(value));
+      setRecipes(await requestByLetter(recipesType, value));
       break;
     default:
       return null;

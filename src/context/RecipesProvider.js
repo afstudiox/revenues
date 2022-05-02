@@ -5,11 +5,14 @@ import RecipesContext from './RecipesContext';
 function RecipesProvider({ children }) {
   const { Provider } = RecipesContext;
   const [recipes, setRecipes] = useState([]);
+  const [recipesType, setRecipesType] = useState('meal');
 
   const dataValues = {
     // colocar estados e funções para os filhos aqui
     recipes,
+    recipesType,
     setRecipes,
+    setRecipesType,
   };
 
   console.log(recipes);
