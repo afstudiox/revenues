@@ -15,6 +15,7 @@ function Footer() {
         <input
           type="image"
           data-testid="drinks-bottom-btn"
+          className={ styles.icon }
           src={ drinkIcon }
           alt="drinkIcon"
         />
@@ -23,6 +24,7 @@ function Footer() {
         <input
           type="image"
           data-testid="explore-bottom-btn"
+          className={ styles.icon }
           src={ exploreIcon }
           alt="exploreIcon"
         />
@@ -31,6 +33,7 @@ function Footer() {
         <input
           type="image"
           data-testid="food-bottom-btn"
+          className={ styles.icon }
           src={ mealIcon }
           alt="mealIcon"
         />

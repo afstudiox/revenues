@@ -12,6 +12,7 @@ function Header({ title }) {
         <input
           type="image"
           data-testid="profile-top-btn"
+          className={ styles.icon }
           img
           src={ profileIcon }
           alt="Profile"

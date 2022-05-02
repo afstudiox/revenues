@@ -21,6 +21,7 @@ function HeaderSearch({ title }) {
         <input
           type="image"
           data-testid="profile-top-btn"
+          className={ styles.icon }
           src={ profileIcon }
           alt="Profile"
         />
@@ -29,6 +30,7 @@ function HeaderSearch({ title }) {
       <input
         type="image"
         data-testid="search-top-btn"
+        className={ styles.icon }
         src={ searchIcon }
         alt="Search"
         onClick={ handleClick }
