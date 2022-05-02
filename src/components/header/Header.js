@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import profileIcon from '../images/profileIcon.svg';
-import styles from '../css/Header.module.css';
+import styles from '../../css/Header.module.css';
+import profileIcon from '../../images/profileIcon.svg';
 
 function Header({ title }) {
   return (

@@ -1,6 +1,6 @@
 import React from 'react';
 import Footer from '../Footer';
-import HeaderSearch from '../HeaderSearch';
+import HeaderSearch from '../header/HeaderSearch';
 
 function Foods() {
   return (

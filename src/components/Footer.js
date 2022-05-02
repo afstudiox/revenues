@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import styles from '../css/Footer.module.css';
 import drinkIcon from '../images/drinkIcon.svg';
 import exploreIcon from '../images/exploreIcon.svg';
 import mealIcon from '../images/mealIcon.svg';
-import styles from '../css/Footer.module.css';
 
 function Footer() {
+  // const { setRecipesType } = useContext(RecipesContext);
+
   return (
     <div
       data-testid="footer"
@@ -14,6 +16,7 @@ function Footer() {
       <Link to="/drinks">
         <input
           type="image"
+          id="drinkIcon"
           data-testid="drinks-bottom-btn"
           className={ styles.icon }
           src={ drinkIcon }
@@ -32,6 +35,7 @@ function Footer() {
       <Link to="/foods">
         <input
           type="image"
+          id="mealIcon"
           data-testid="food-bottom-btn"
           className={ styles.icon }
           src={ mealIcon }
