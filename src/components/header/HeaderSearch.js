@@ -12,8 +12,6 @@ function HeaderSearch({ title }) {
     setToggle((prevState) => !prevState);
   };
 
-  console.log(toggle);
-
   return (
     // Requisito 9
     <header>
