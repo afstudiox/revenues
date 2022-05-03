@@ -1,7 +1,9 @@
 import React, { useContext, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import RecipesContext from '../../context/RecipesContext';
+import whiteHeart from '../../images/whiteHeartIcon.svg';
 import { requestRecipeDetail } from '../../services/API';
+import './drinksRecipes.css';
 
 function DrinksRecipes() {
   const { location: { pathname } } = useHistory();
@@ -35,9 +37,9 @@ function DrinksRecipes() {
               Share
             </button>
             <button type="button" data-testid="favorite-btn">
-              Favorite Recipe
+              <img src={ whiteHeart } alt="favorite heart" />
             </button>
-            <h5 data-testid="recipe-category">{detailsRecipeArray[0][0].strCategory}</h5>
+            <h5 data-testid="recipe-category">{detailsRecipeArray[0][0].strAlcoholic}</h5>
             <ul>
               {/* colocar os ingredientes e quantidades aqui */}
               <li data-testid="0-ingredient-name-and-measure" />
@@ -47,12 +49,15 @@ function DrinksRecipes() {
             <section>
               <p data-testid="0-recomendation-card" />
             </section>
-            <button
-              type="button"
-              data-testid="start-recipe-btn"
-            >
-              Start recipe
-            </button>
+            <Link to={ `${pathname}/in-progress` }>
+              <button
+                type="button"
+                className="start-recipe"
+                data-testid="start-recipe-btn"
+              >
+                Start recipe
+              </button>
+            </Link>
           </div>
         )
       }
