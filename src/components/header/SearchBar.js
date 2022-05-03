@@ -11,7 +11,7 @@ function SearchBar() {
   const [value, setValue] = useState('');
   const { location: { pathname } } = useHistory();
   useEffect(() => {
-    if (pathname !== '/foods') {
+    if (pathname.includes('/drinks')) {
       setRecipesType('cocktail');
     } else {
       setRecipesType('meal');
