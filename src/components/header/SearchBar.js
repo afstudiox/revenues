@@ -18,6 +18,8 @@ function SearchBar() {
     }
   }, []);
 
+  console.log(recipesType);
+
   const history = useHistory();
 
   // Sorry, we haven't found any recipes for these filters.
@@ -48,19 +50,22 @@ function SearchBar() {
   };
 
   const requestAPI = async () => {
+    const byIngredients = await requestByIngredients(recipesType, value);
+    const byName = await requestByName(recipesType, value);
+    const byLetter = await requestByLetter(recipesType, value);
     if (selectedRadio === 'letter' && value.length > 1) {
       alert('Your search must have only 1 (one) character');
       return null;
     }
     switch (selectedRadio) {
     case 'ingredient':
-      setRecipes(await requestByIngredients(recipesType, value));
+      setRecipes(byIngredients);
       break;
     case 'name':
-      setRecipes(await requestByName(recipesType, value));
+      setRecipes(byName);
       break;
     case 'letter':
-      setRecipes(await requestByLetter(recipesType, value));
+      setRecipes(byLetter);
       break;
     default:
       return null;

@@ -7,6 +7,7 @@ function Foods() {
   const { recipes } = useContext(RecipesContext);
   const type = Object.keys(recipes);
   const magic = 11;
+  console.log(type);
 
   // useEffect(() => {
   //   console.log
@@ -19,7 +20,7 @@ function Foods() {
       <HeaderSearch title="Foods" />
       {Object.keys(recipes).length
         && recipes[type[0]] !== null
-        && recipes[type].filter((_recipe, index) => index <= magic)
+        && recipes[type[0]].filter((_recipe, index) => index <= magic)
           .map((recipe, index) => (
             <section key={ index } data-testid={ `${index}-recipe-card` }>
               <img

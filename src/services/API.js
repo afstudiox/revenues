@@ -20,3 +20,9 @@ export const requestByLetter = async (recipesType, letter) => {
     .then((response) => response.json());
   return request;
 };
+
+export const requestByAll = async () => {
+  const request = await fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=')
+    .then((response) => response.json());
+  return request;
+};
