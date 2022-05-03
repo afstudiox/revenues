@@ -9,7 +9,7 @@ function Explore() {
     <>
       <Header title="Explore" />
       <div className={ styles.container }>
-        <Link to="/">
+        <Link to="/explore/foods">
           <button
             type="button"
             data-testid="explore-foods"
@@ -18,7 +18,7 @@ function Explore() {
 
           </button>
         </Link>
-        <Link to="/">
+        <Link to="/explore/drinks">
           <button
             type="button"
             data-testid="explore-drinks"
