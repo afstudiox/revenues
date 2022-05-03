@@ -6,17 +6,19 @@ import { requestByIngredients, requestByLetter, requestByName } from '../../serv
 
 function SearchBar() {
   const { setRecipes,
-    resultSize, recipesType, setRecipesType, recipes } = useContext(RecipesContext);
+    resultSize, recipesType/*  setRecipesType, */, recipes } = useContext(RecipesContext);
   const [selectedRadio, setSelectedRadio] = useState('');
   const [value, setValue] = useState('');
   const { location: { pathname } } = useHistory();
-  useEffect(() => {
+  /* useEffect(() => {
     if (pathname.includes('/drinks')) {
       setRecipesType('cocktail');
     } else {
       setRecipesType('meal');
     }
-  }, []);
+  }, [recipesType]); */
+
+  console.log(recipesType);
 
   const history = useHistory();
 
