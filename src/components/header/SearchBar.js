@@ -10,7 +10,6 @@ function SearchBar() {
   const [selectedRadio, setSelectedRadio] = useState('');
   const [value, setValue] = useState('');
   const { location: { pathname } } = useHistory();
-  console.log('Pathname =>', pathname);
   useEffect(() => {
     if (pathname !== '/foods') {
       setRecipesType('cocktail');
@@ -27,10 +26,13 @@ function SearchBar() {
 
   function redirectToRecipe() {
     const key = Object.keys(recipes);
+    // Requisito 18
     if (recipes[key[0]] === null) {
       alert('Sorry, we haven\'t found any recipes for these filters.');
       return null;
-    } if (key[0] === 'meals' && recipes[key] !== null) {
+    }
+    // Requisito 16
+    if (key[0] === 'meals' && recipes[key] !== null) {
       return resultSize === 1
       && history.push(`${pathname}/${recipes.meals[0].idMeal}`);
     }

@@ -13,7 +13,7 @@ function Drinks() {
   return (
     <>
       <HeaderSearch title="Drinks" />
-      {Object.keys(recipes).length
+      {type.length
         && recipes[type[0]] !== null
         && recipes[type[0]].filter((_recipe, index) => index <= magic)
           .map((recipe, index) => (
