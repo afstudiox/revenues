@@ -3,6 +3,7 @@
 // const API_URL_FIRST_LETTER = 'https://www.themealdb.com/api/json/v1/1/search.php?f=';
 
 export const requestByIngredients = async (recipesType, ingredient) => {
+  console.log(`https://www.the${recipesType}db.com/api/json/v1/1/filter.php?i=${ingredient}`);
   const request = await fetch(`https://www.the${recipesType}db.com/api/json/v1/1/filter.php?i=${ingredient}`);
   const response = await request.json();
   return response;

@@ -4,9 +4,9 @@ import { useHistory } from 'react-router-dom';
 import RecipesContext from '../../context/RecipesContext';
 import { requestByIngredients, requestByLetter, requestByName } from '../../services/API';
 
-// eslint-disable-next-line react/prop-types
 function SearchBar() {
-  const { setRecipes, recipesType, setRecipesType } = useContext(RecipesContext);
+  const { setRecipes,
+    resultSize, recipesType, setRecipesType, recipes } = useContext(RecipesContext);
   const [selectedRadio, setSelectedRadio] = useState('');
   const [value, setValue] = useState('');
   const { location: { pathname } } = useHistory();
@@ -17,6 +17,27 @@ function SearchBar() {
       setRecipesType('meal');
     }
   }, []);
+
+  const history = useHistory();
+
+  // Sorry, we haven't found any recipes for these filters.
+
+  function redirectToRecipe() {
+    const key = Object.keys(recipes);
+    if (recipes[key[0]] === null) {
+      alert('Sorry, we haven\'t found any recipes for these filters.');
+      return null;
+    } if (key[0] === 'meals' && recipes[key] !== null) {
+      return resultSize === 1
+      && history.push(`${pathname}/${recipes.meals[0].idMeal}`);
+    }
+    return resultSize === 1
+    && history.push(`${pathname}/${recipes.drinks[0].idDrink}`);
+  }
+
+  useEffect(() => {
+    redirectToRecipe();
+  }, [resultSize]);
 
   const getSelectedRadio = ({ target }) => {
     setSelectedRadio(target.id);
