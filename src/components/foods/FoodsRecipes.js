@@ -13,11 +13,12 @@ function FoodsRecipes() {
 
   async function requestDetails() {
     const id = pathname.split('/');
-    const retorno = await requestRecipeDetail('meal', id[2]);
-    setRecipeDetail(retorno);
+    const details = await requestRecipeDetail('meal', id[2]);
+    setRecipeDetail(details);
   }
 
   useEffect(() => {
+    console.log(recipeDetail);
     requestDetails();
   }, []);
 
@@ -60,7 +61,7 @@ function FoodsRecipes() {
               title={ detailsRecipeArray[0][0].strMeal }
               data-testid="video"
             />
-            {/* Card de receitas recomendadas */}
+            {/* Card de drinks recomendadas */}
             <section>
               <p data-testid="0-recomendation-card" />
             </section>

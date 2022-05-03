@@ -12,9 +12,8 @@ function DrinksRecipes() {
 
   async function requestDetails() {
     const id = pathname.split('/');
-    const retorno = await requestRecipeDetail('cocktail', id[2]);
-    setRecipeDetail(retorno);
-    return retorno;
+    const details = await requestRecipeDetail('cocktail', id[2]);
+    setRecipeDetail(details);
   }
 
   useEffect(() => {
@@ -45,7 +44,7 @@ function DrinksRecipes() {
               <li data-testid="0-ingredient-name-and-measure" />
             </ul>
             <p data-testid="instructions">{detailsRecipeArray[0][0].strInstructions}</p>
-            {/* Card de receitas recomendadas */}
+            {/* Card de receitas de comidas recomendadas */}
             <section>
               <p data-testid="0-recomendation-card" />
             </section>
