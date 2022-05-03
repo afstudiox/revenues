@@ -18,11 +18,7 @@ function SearchBar() {
     }
   }, []);
 
-  console.log('recipesType do searchBar =>', recipesType);
-
   const history = useHistory();
-
-  // Sorry, we haven't found any recipes for these filters.
 
   function redirectToRecipe() {
     const key = Object.keys(recipes);
