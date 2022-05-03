@@ -7,7 +7,6 @@ function Foods() {
   const { recipes } = useContext(RecipesContext);
   const type = Object.keys(recipes);
   const magic = 11;
-  console.log(type);
 
   // useEffect(() => {
   //   console.log

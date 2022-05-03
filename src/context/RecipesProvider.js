@@ -10,6 +10,10 @@ function RecipesProvider({ children }) {
   const [resultSize, setResultSize] = useState(0);
   console.log('Recipes do provider =>', recipes);
 
+  const handleRequest = ({ target }) => {
+    setRecipesType(target.name);
+  };
+
   const dataValues = {
     // colocar estados e funções para os filhos aqui
     recipes,
@@ -17,10 +21,11 @@ function RecipesProvider({ children }) {
     setRecipes,
     setRecipesType,
     resultSize,
+    handleRequest,
     setResultSize,
   };
 
-  console.log(recipes);
+  console.log('RecipesType do provider', recipesType);
 
   useEffect(() => {
     const key = Object.keys(recipes);
@@ -33,11 +38,11 @@ function RecipesProvider({ children }) {
 
   useEffect(() => {
     const setRec = async () => {
-      const all = await requestByAll();
+      const all = await requestByAll(recipesType);
       setRecipes(all);
     };
     setRec();
-  }, []);
+  }, [recipesType]);
 
   return (
     <Provider value={ dataValues }>

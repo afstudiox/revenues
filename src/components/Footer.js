@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import RecipesContext from '../context/RecipesContext';
 import styles from '../css/Footer.module.css';
 import drinkIcon from '../images/drinkIcon.svg';
 import exploreIcon from '../images/exploreIcon.svg';
 import mealIcon from '../images/mealIcon.svg';
 
 function Footer() {
-  // const { setRecipesType } = useContext(RecipesContext);
+  const { handleRequest } = useContext(RecipesContext);
 
   return (
     <div
@@ -15,6 +16,8 @@ function Footer() {
     >
       <Link to="/drinks">
         <input
+          onClick={ handleRequest }
+          name="cocktail"
           type="image"
           id="drinkIcon"
           data-testid="drinks-bottom-btn"
@@ -34,6 +37,8 @@ function Footer() {
       </Link>
       <Link to="/foods">
         <input
+          onClick={ handleRequest }
+          name="meal"
           type="image"
           id="mealIcon"
           data-testid="food-bottom-btn"
