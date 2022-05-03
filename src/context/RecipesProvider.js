@@ -8,7 +8,8 @@ function RecipesProvider({ children }) {
   const [recipes, setRecipes] = useState({});
   const [recipesType, setRecipesType] = useState('meal');
   const [resultSize, setResultSize] = useState(0);
-  console.log('Recipes do provider =>', recipes);
+  const [recipeDetail, setRecipeDetail] = useState({});
+  // console.log('Recipes do provider =>', recipes);
 
   const handleRequest = ({ target }) => {
     setRecipesType(target.name);
@@ -18,6 +19,8 @@ function RecipesProvider({ children }) {
     // colocar estados e funções para os filhos aqui
     recipes,
     recipesType,
+    recipeDetail,
+    setRecipeDetail,
     setRecipes,
     setRecipesType,
     resultSize,
@@ -25,7 +28,7 @@ function RecipesProvider({ children }) {
     setResultSize,
   };
 
-  console.log('RecipesType do provider', recipesType);
+  // console.log('RecipesType do provider', recipesType);
 
   useEffect(() => {
     const key = Object.keys(recipes);
