@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Footer from './Footer';
 import Header from './header/Header';
 import './profile.css';
 
 function Profile() {
-  const { email } = JSON.parse(localStorage.getItem('user'));
+  const [storageEmail, setStorageEmail] = useState('');
+  // const { email } = JSON.parse(localStorage.getItem('user'));
+  if (JSON.parse(localStorage.getItem('user'))) {
+    const { email } = JSON.parse(localStorage.getItem('user'));
+    setStorageEmail(email);
+  }
 
   function logout() {
     localStorage.clear();
@@ -15,7 +20,7 @@ function Profile() {
     <>
       <Header title="Profile" />
       <main>
-        <p data-testid="profile-email">{email}</p>
+        <p data-testid="profile-email">{storageEmail}</p>
         <Link to="/done-recipes">
           <button
             type="button"
