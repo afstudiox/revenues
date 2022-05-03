@@ -10,8 +10,9 @@ function SearchBar() {
   const [selectedRadio, setSelectedRadio] = useState('');
   const [value, setValue] = useState('');
   const { location: { pathname } } = useHistory();
+  // console.log(pathname.includes('/foods'));
   useEffect(() => {
-    if (pathname !== '/foods') {
+    if (pathname.includes('/drinks')) {
       setRecipesType('cocktail');
     } else {
       setRecipesType('meal');
