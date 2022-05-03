@@ -5,6 +5,7 @@ import './App.css';
 import DoneRecipes from './components/DoneRecipes';
 import DrinkInProgress from './components/drinks/DrinkInProgress';
 import Drinks from './components/drinks/Drinks';
+import DrinksRecipes from './components/drinks/DrinksRecipes';
 import DrinksIngredients from './components/explore/DrinksIngredients';
 import Explore from './components/explore/Explore';
 import ExploreDrinks from './components/explore/ExploreDrinks';
@@ -14,6 +15,7 @@ import FoodsNationalities from './components/explore/FoodsNationalities';
 import FavoriteRecipes from './components/FavoriteRecipes';
 import FoodInProgress from './components/foods/FoodInProgress';
 import Foods from './components/foods/Foods';
+import FoodsRecipes from './components/foods/FoodsRecipes';
 import Login from './components/Login';
 import Profile from './components/Profile';
 import RecipesProvider from './context/RecipesProvider';
@@ -21,14 +23,18 @@ import RecipesProvider from './context/RecipesProvider';
 function App() {
   return (
     <RecipesProvider>
-      <BrowserRouter>
-        <Switch>
-          <div className="generalContainer">
+      <div className="generalContainer">
+        <BrowserRouter>
+          <Switch>
             <Route exact path="/" component={ Login } />
             <Route exact path="/foods" component={ Foods } />
             <Route exact path="/drinks" component={ Drinks } />
-            <Route exact path={ `/foods/${'...'}` } component={ Foods } />
-            <Route exact path={ `/drinks/${'...'}` } component={ Drinks } />
+            <Route
+              exact
+              path="/foods/:produto"
+              render={ (props) => <FoodsRecipes { ...props } /> }
+            />
+            <Route exact path={ `/drinks/${'...'}` } component={ DrinksRecipes } />
             <Route path={ `/foods/${'...'}/in-progress` } component={ FoodInProgress } />
             <Route
               path={ `/drinks/${'...'}/in-progress` }
@@ -55,9 +61,9 @@ function App() {
             <Route path="/profile" component={ Profile } />
             <Route path="/done-recipes" component={ DoneRecipes } />
             <Route path="/favorite-recipes" component={ FavoriteRecipes } />
-          </div>
-        </Switch>
-      </BrowserRouter>
+          </Switch>
+        </BrowserRouter>
+      </div>
     </RecipesProvider>
   );
 }
