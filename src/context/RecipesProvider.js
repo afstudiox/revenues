@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
+import { requestByAll } from '../services/API';
 import RecipesContext from './RecipesContext';
 
 function RecipesProvider({ children }) {
@@ -7,6 +8,11 @@ function RecipesProvider({ children }) {
   const [recipes, setRecipes] = useState({});
   const [recipesType, setRecipesType] = useState('meal');
   const [resultSize, setResultSize] = useState(0);
+  console.log('Recipes do provider =>', recipes);
+
+  const handleRequest = ({ target }) => {
+    setRecipesType(target.name);
+  };
 
   const dataValues = {
     // colocar estados e funções para os filhos aqui
@@ -15,21 +21,28 @@ function RecipesProvider({ children }) {
     setRecipes,
     setRecipesType,
     resultSize,
+    handleRequest,
     setResultSize,
   };
 
-  console.log(recipes);
+  console.log('RecipesType do provider', recipesType);
 
   useEffect(() => {
     const key = Object.keys(recipes);
-    console.log(recipes);
-    console.log(key);
     if (key.length) {
       setResultSize(recipes[key[0]] === null
         ? { } : recipes[key[0]].length);
     }
     // console.log(recipes[key].length);
   }, [recipes]);
+
+  useEffect(() => {
+    const setRec = async () => {
+      const all = await requestByAll(recipesType);
+      setRecipes(all);
+    };
+    setRec();
+  }, [recipesType]);
 
   return (
     <Provider value={ dataValues }>

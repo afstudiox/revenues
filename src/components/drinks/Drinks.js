@@ -15,7 +15,7 @@ function Drinks() {
       <HeaderSearch title="Drinks" />
       {Object.keys(recipes).length
         && recipes[type[0]] !== null
-        && recipes[type].filter((_recipe, index) => index <= magic)
+        && recipes[type[0]].filter((_recipe, index) => index <= magic)
           .map((recipe, index) => (
             <section key={ index } data-testid={ `${index}-recipe-card` }>
               <img
