@@ -32,9 +32,4 @@ export const requestRecipeDetail = async (recipesType, recipeID) => {
   const request = await fetch(`https://www.the${recipesType}db.com/api/json/v1/1/lookup.php?i=${recipeID}`)
     .then((response) => response.json());
   return request;
-  // console.log(`www.the${recipesType}db.com/api/json/v1/1/lookup.php?i=${recipeID}`);
-  // const request = await
-  // fetch(`www.the${recipesType}db.com/api/json/v1/1/lookup.php?i=${recipeID}`)
-  //   .then((response) => { console.log(response); return response.json(); });
-  // return request;
 };
