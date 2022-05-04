@@ -12,12 +12,10 @@ function RecipesProvider({ children }) {
   const [resultSize, setResultSize] = useState(0);
   const [buttonText, setButtonText] = useState([]);
   const [location, setLocation] = useState('');
+  const [arrayCategory, setArrayCategory] = useState([]);
   const [render, setRender] = useState('');
 
-  console.log('location: =>', location);
-  console.log('render =>', render);
-  console.log('recipesType =>', recipesType);
-  console.log('recipes =>', recipes);
+  console.log('arrayCategory =>', arrayCategory);
 
   const handleRequest = ({ target }) => {
     console.log(target.name);
@@ -25,7 +23,13 @@ function RecipesProvider({ children }) {
 
   const handleCategory = async ({ target }) => {
     const { innerText } = target;
-    setRecipes(await requestFilterCategory(recipesType, innerText));
+    setArrayCategory([...arrayCategory, ...[innerText]]);
+    if (!arrayCategory.includes(innerText)) {
+      setRecipes(await requestFilterCategory(recipesType, innerText));
+    } else {
+      setRecipes(await requestByAll(recipesType));
+      setArrayCategory([]);
+    }
   };
 
   const dataValues = {

@@ -14,8 +14,6 @@ function HeaderSearch({ title }) {
     render, handleCategory, setLocation } = useContext(RecipesContext);
   const quatro = 4;
 
-  console.log('buttonText: ', buttonText);
-
   const { location: { pathname } } = useHistory();
 
   useEffect(() => {
