@@ -11,7 +11,7 @@ function HeaderSearch({ title }) {
   const [toggle, setToggle] = useState(false);
   const { recipesType,
     setRecipesType, buttonText,
-    render, setLocation } = useContext(RecipesContext);
+    render, handleCategory, setLocation } = useContext(RecipesContext);
   const quatro = 4;
 
   console.log('buttonText: ', buttonText);
@@ -61,6 +61,7 @@ function HeaderSearch({ title }) {
                   <button
                     data-testid={ `${strCategory}-category-filter` }
                     type="button"
+                    onClick={ handleCategory }
                     key={ index }
                   >
                     { strCategory }

@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { requestByAll,
+  requestByIngredients,
   requestTextButtonsMeals, requestTextButtonsMealsCocktail } from '../services/API';
 import RecipesContext from './RecipesContext';
 
@@ -13,12 +14,18 @@ function RecipesProvider({ children }) {
   const [location, setLocation] = useState('');
   const [render, setRender] = useState('');
 
-  console.log('location: ', location);
-  console.log('render', render);
-  console.log('recipesType', recipesType);
+  console.log('location: =>', location);
+  console.log('render =>', render);
+  console.log('recipesType =>', recipesType);
+  console.log('recipes =>', recipes);
 
   const handleRequest = ({ target }) => {
     console.log(target.name);
+  };
+
+  const handleCategory = async ({ target }) => {
+    const { innerText } = target;
+    setRecipes(await requestByIngredients(recipesType, innerText));
   };
 
   const dataValues = {
@@ -26,6 +33,7 @@ function RecipesProvider({ children }) {
     recipes,
     buttonText,
     location,
+    handleCategory,
     handleRequest,
     setLocation,
     render,
