@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
-import { requestByAll } from '../services/API';
+import { requestByAll,
+  requestFilterCategory,
+  requestTextButtonsMeals, requestTextButtonsMealsCocktail } from '../services/API';
 import RecipesContext from './RecipesContext';
 
 function RecipesProvider({ children }) {
@@ -8,24 +10,45 @@ function RecipesProvider({ children }) {
   const [recipes, setRecipes] = useState({});
   const [recipesType, setRecipesType] = useState('meal');
   const [resultSize, setResultSize] = useState(0);
-  console.log('Recipes do provider =>', recipes);
+  const [buttonText, setButtonText] = useState([]);
+  const [location, setLocation] = useState('');
+  const [arrayCategory, setArrayCategory] = useState([]);
+  const [render, setRender] = useState('');
+
+  console.log('arrayCategory =>', arrayCategory);
 
   const handleRequest = ({ target }) => {
-    setRecipesType(target.name);
+    console.log(target.name);
+  };
+
+  const handleCategory = async ({ target }) => {
+    const { innerText } = target;
+    setArrayCategory([...arrayCategory, ...[innerText]]);
+    if (!arrayCategory.includes(innerText)) {
+      setRecipes(await requestFilterCategory(recipesType, innerText));
+    } else {
+      setRecipes(await requestByAll(recipesType));
+      setArrayCategory([]);
+    }
   };
 
   const dataValues = {
     // colocar estados e funções para os filhos aqui
     recipes,
+    buttonText,
+    location,
+    handleCategory,
+    handleRequest,
+    setLocation,
+    render,
+    setRender,
+    setButtonText,
     recipesType,
     setRecipes,
     setRecipesType,
     resultSize,
-    handleRequest,
     setResultSize,
   };
-
-  console.log('RecipesType do provider', recipesType);
 
   useEffect(() => {
     const key = Object.keys(recipes);
@@ -43,6 +66,19 @@ function RecipesProvider({ children }) {
     };
     setRec();
   }, [recipesType]);
+
+  useEffect(() => {
+    const request = async () => {
+      if (location.includes('/drinks')) {
+        setButtonText(await requestTextButtonsMealsCocktail());
+        setRender('drinks');
+      } else {
+        setButtonText(await requestTextButtonsMeals());
+        setRender('meals');
+      }
+    };
+    request();
+  }, [location]);
 
   return (
     <Provider value={ dataValues }>
