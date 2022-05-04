@@ -17,6 +17,9 @@ function Login() {
     localStorage.setItem('mealsToken', 1);
     localStorage.setItem('cocktailsToken', 1);
     localStorage.setItem('user', JSON.stringify(email));
+    if (localStorage.setItem('doneRecipes', []) === null) {
+      localStorage.setItem('doneRecipes', []);
+    }
   };
 
   return (

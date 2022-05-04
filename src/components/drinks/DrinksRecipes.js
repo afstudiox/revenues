@@ -3,20 +3,25 @@ import { Link, useHistory } from 'react-router-dom';
 import RecipesContext from '../../context/RecipesContext';
 import shareIcon from '../../images/shareIcon.svg';
 import whiteHeart from '../../images/whiteHeartIcon.svg';
-import { requestRecipeDetail } from '../../services/API';
+import { requestByAll, requestRecipeDetail } from '../../services/API';
 import './drinksRecipes.css';
 
 function DrinksRecipes() {
   const [ingredientsList, setIngredientsList] = useState([]);
   const [measureList, setMeasureList] = useState([]);
   const { location: { pathname } } = useHistory();
-  const { recipeDetail, setRecipeDetail } = useContext(RecipesContext);
+  const { recipeDetail,
+    setRecipeDetail,
+    setRecommended } = useContext(RecipesContext);
   const detailsRecipeArray = Object.values(recipeDetail);
 
   async function requestDetails() {
     const id = pathname.split('/');
     const details = await requestRecipeDetail('cocktail', id[2]);
+    const recommend = await requestByAll('cocktail');
     setRecipeDetail(details);
+    // Requisito 36
+    setRecommended(recommend);
   }
 
   useEffect(() => {
@@ -25,6 +30,7 @@ function DrinksRecipes() {
 
   useEffect(() => {
     if (detailsRecipeArray.length !== 0) {
+      // Requisito 35
       setIngredientsList(Object.keys(recipeDetail.drinks[0]).reduce((acc, element) => {
         if (element.includes('strIngredient')
         && recipeDetail.drinks[0][element] !== null
@@ -80,7 +86,6 @@ function DrinksRecipes() {
                       : `${element} - ${measureList[index]}`}
                   </li>))
               }
-              {/* <li data-testid="0-ingredient-name-and-measure" /> */}
             </ul>
             <p data-testid="instructions">{detailsRecipeArray[0][0].strInstructions}</p>
             {/* Card de receitas de comidas recomendadas */}

@@ -9,6 +9,13 @@ function RecipesProvider({ children }) {
   const [recipesType, setRecipesType] = useState('meal');
   const [resultSize, setResultSize] = useState(0);
   const [recipeDetail, setRecipeDetail] = useState({});
+  const [recommended, setRecommended] = useState({});
+  const [inProgressRecipes, setInProgressRecipes] = useState({
+    cocktails: {
+    },
+    meals: {
+
+    } });
   // console.log('Recipes do provider =>', recipes);
 
   const handleRequest = ({ target }) => {
@@ -20,9 +27,13 @@ function RecipesProvider({ children }) {
     recipes,
     recipesType,
     recipeDetail,
+    recommended,
+    inProgressRecipes,
+    setRecommended,
     setRecipeDetail,
     setRecipes,
     setRecipesType,
+    setInProgressRecipes,
     resultSize,
     handleRequest,
     setResultSize,

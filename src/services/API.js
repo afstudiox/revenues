@@ -21,14 +21,13 @@ export const requestByLetter = async (recipesType, letter) => {
   return request;
 };
 
-export const requestByAll = async (teste) => {
-  const request = await fetch(`https://www.the${teste}db.com/api/json/v1/1/search.php?s=`)
+export const requestByAll = async (recipesType) => {
+  const request = await fetch(`https://www.the${recipesType}db.com/api/json/v1/1/search.php?s=`)
     .then((response) => response.json());
   return request;
 };
 
 export const requestRecipeDetail = async (recipesType, recipeID) => {
-  console.log(`https://www.the${recipesType}db.com/api/json/v1/1/lookup.php?i=${recipeID}`);
   const request = await fetch(`https://www.the${recipesType}db.com/api/json/v1/1/lookup.php?i=${recipeID}`)
     .then((response) => response.json());
   return request;
