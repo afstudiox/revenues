@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { requestByAll,
-  requestByIngredients,
+  requestFilterCategory,
   requestTextButtonsMeals, requestTextButtonsMealsCocktail } from '../services/API';
 import RecipesContext from './RecipesContext';
 
@@ -25,7 +25,7 @@ function RecipesProvider({ children }) {
 
   const handleCategory = async ({ target }) => {
     const { innerText } = target;
-    setRecipes(await requestByIngredients(recipesType, innerText));
+    setRecipes(await requestFilterCategory(recipesType, innerText));
   };
 
   const dataValues = {
