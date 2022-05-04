@@ -13,6 +13,7 @@ function HeaderSearch({ title }) {
     setRecipesType, buttonText,
     render, handleCategory, setLocation } = useContext(RecipesContext);
   const quatro = 4;
+  const cinco = 5;
 
   const { location: { pathname } } = useHistory();
 
@@ -65,7 +66,7 @@ function HeaderSearch({ title }) {
                     { strCategory }
                   </button>
                 )
-              )) : []
+              )) : index === cinco && <button type="button">All</button>
           )
         }
       </div>

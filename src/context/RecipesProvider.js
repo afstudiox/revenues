@@ -21,6 +21,10 @@ function RecipesProvider({ children }) {
     console.log(target.name);
   };
 
+  const handleStandard = async () => {
+    setRecipes(await requestByAll());
+  };
+
   const handleCategory = async ({ target }) => {
     const { innerText } = target;
     setArrayCategory([...arrayCategory, ...[innerText]]);
@@ -37,6 +41,7 @@ function RecipesProvider({ children }) {
     recipes,
     buttonText,
     location,
+    handleStandard,
     handleCategory,
     handleRequest,
     setLocation,
