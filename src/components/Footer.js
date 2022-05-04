@@ -16,8 +16,8 @@ function Footer() {
     >
       <Link to="/drinks">
         <input
-          onClick={ handleRequest }
           name="cocktail"
+          onClick={ handleRequest }
           type="image"
           id="drinkIcon"
           data-testid="drinks-bottom-btn"
@@ -37,8 +37,8 @@ function Footer() {
       </Link>
       <Link to="/foods">
         <input
-          onClick={ handleRequest }
           name="meal"
+          onClick={ handleRequest }
           type="image"
           id="mealIcon"
           data-testid="food-bottom-btn"

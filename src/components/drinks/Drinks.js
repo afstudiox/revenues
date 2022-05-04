@@ -8,8 +8,6 @@ function Drinks() {
   const type = Object.keys(recipes);
   const magic = 11;
 
-  console.log(Object.keys(recipes).length);
-
   return (
     <>
       <HeaderSearch title="Drinks" />

@@ -26,3 +26,15 @@ export const requestByAll = async (teste) => {
     .then((response) => response.json());
   return request;
 };
+
+export const requestTextButtonsMeals = async () => {
+  const request = await fetch('https://www.themealdb.com/api/json/v1/1/list.php?c=list')
+    .then((response) => response.json());
+  return request;
+};
+
+export const requestTextButtonsMealsCocktail = async () => {
+  const request = await fetch('https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list')
+    .then((response) => response.json());
+  return request;
+};

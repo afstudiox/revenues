@@ -9,13 +9,17 @@ import SearchBar from './SearchBar';
 
 function HeaderSearch({ title }) {
   const [toggle, setToggle] = useState(false);
-  const { /* setRecipes, */
-    /* resultSize, */ recipesType,
-    setRecipesType /* recipes */ } = useContext(RecipesContext);
+  const { recipesType,
+    setRecipesType, buttonText,
+    render, setLocation } = useContext(RecipesContext);
+  const quatro = 4;
+
+  console.log('buttonText: ', buttonText);
 
   const { location: { pathname } } = useHistory();
 
   useEffect(() => {
+    setLocation(pathname);
     if (pathname.includes('/drinks')) {
       setRecipesType('cocktail');
     } else {
@@ -48,13 +52,29 @@ function HeaderSearch({ title }) {
         alt="Search"
         onClick={ handleClick }
       />
-
+      <div>
+        {
+          !toggle && (
+            buttonText[render] !== undefined
+              ? buttonText[render].map(({ strCategory }, index) => (
+                index <= quatro && (
+                  <button
+                    data-testid={ `${strCategory}-category-filter` }
+                    type="button"
+                    key={ index }
+                  >
+                    { strCategory }
+                  </button>
+                )
+              )) : []
+          )
+        }
+      </div>
       {
         toggle && (
           <SearchBar />
         )
       }
-
     </header>
   );
 }
