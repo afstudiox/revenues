@@ -33,51 +33,52 @@ function HeaderSearch({ title }) {
   return (
     // Requisito 9
     <header className={ styles.container }>
-      <Link to="/profile">
+      <div className={ styles.navbar }>
+        <Link to="/profile">
+          <input
+            type="image"
+            data-testid="profile-top-btn"
+            className={ styles.icon }
+            src={ profileIcon }
+            alt="Profile"
+          />
+        </Link>
+        <h1 data-testid="page-title">{title}</h1>
         <input
           type="image"
-          data-testid="profile-top-btn"
+          data-testid="search-top-btn"
           className={ styles.icon }
-          src={ profileIcon }
-          alt="Profile"
+          src={ searchIcon }
+          alt="Search"
+          onClick={ handleClick }
         />
-      </Link>
-      <h1 data-testid="page-title">{title}</h1>
-      <input
-        type="image"
-        data-testid="search-top-btn"
-        className={ styles.icon }
-        src={ searchIcon }
-        alt="Search"
-        onClick={ handleClick }
-      />
-      <div>
-        {
-          !toggle && (
-            buttonText[render] !== undefined
-              ? buttonText[render].map(({ strCategory }, index) => (
-                index <= quatro ? (
-                  <button
-                    data-testid={ `${strCategory}-category-filter` }
-                    type="button"
-                    onClick={ handleCategory }
-                    key={ index }
-                  >
-                    { strCategory }
-                  </button>
-                ) : index === cinco && (
-                  <button
-                    data-testid="All-category-filter"
-                    onClick={ handleStandard }
-                    type="button"
-                  >
-                    All
-                  </button>
-                )
-              )) : []
-          )
-        }
       </div>
+      <div className={ styles.category }>
+        {!toggle && (
+          buttonText[render] !== undefined
+            ? buttonText[render].map(({ strCategory }, index) => (
+              index <= quatro ? (
+                <button
+                  data-testid={ `${strCategory}-category-filter` }
+                  type="button"
+                  onClick={ handleCategory }
+                  key={ index }
+                >
+                  {strCategory}
+                </button>
+              ) : index === cinco && (
+                <button
+                  data-testid="All-category-filter"
+                  onClick={ handleStandard }
+                  type="button"
+                >
+                  All
+                </button>
+              )
+            )) : []
+        )}
+      </div>
+
       {
         toggle && (
           <SearchBar />
