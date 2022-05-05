@@ -14,20 +14,40 @@ function CardButtonShareAndFav() {
   function copyToClipBoard() {
     copy(`http://localhost:3000${pathname}`);
     setShareClicked(true);
-    setFavorite(true);
+  }
+
+  function favoriteRecipe() {
+    setFavorite((prevState) => !prevState);
   }
 
   return (
     <>
-      <button type="button" data-testid="share-btn" onClick={ copyToClipBoard }>
+      <button
+        src={ shareIcon }
+        type="button"
+        data-testid="share-btn"
+        onClick={ copyToClipBoard }
+      >
         <img src={ shareIcon } alt="share button" />
       </button>
-      {shareClicked && (<p>Link copied!</p>)}
-      <button type="button" data-testid="favorite-btn">
-        {favorite
+      <input
+        type="image"
+        data-testid="favorite-btn"
+        src={ favorite ? blackHeart : whiteHeart }
+        alt="Profile"
+        onClick={ favoriteRecipe }
+      />
+      {/* <button
+        type="button"
+        data-testid="favorite-btn"
+        onClick={ favoriteRecipe }
+        src={ !favorite ? whiteHeart : blackHeart }
+      >
+        {!favorite
           ? (<img src={ whiteHeart } alt="favorite heart" />)
           : (<img src={ blackHeart } alt="favorite heart" />) }
-      </button>
+      </button> */}
+      {shareClicked && (<p>Link copied!</p>)}
     </>
   );
 }
