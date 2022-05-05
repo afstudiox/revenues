@@ -20,6 +20,9 @@ function RecipesProvider({ children }) {
   const [arrayCategory, setArrayCategory] = useState([]);
   const [render, setRender] = useState('');
 
+  console.log('ButtonText =>', buttonText);
+  console.log(arrayCategory);
+
   const handleRequest = ({ target }) => {
     console.log(target.name);
   };
