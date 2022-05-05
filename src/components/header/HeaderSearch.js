@@ -11,8 +11,9 @@ function HeaderSearch({ title }) {
   const [toggle, setToggle] = useState(false);
   const { recipesType,
     setRecipesType, buttonText,
-    render, handleCategory, setLocation } = useContext(RecipesContext);
+    render, handleCategory, setLocation, handleStandard } = useContext(RecipesContext);
   const quatro = 4;
+  const cinco = 5;
 
   const { location: { pathname } } = useHistory();
 
@@ -55,7 +56,7 @@ function HeaderSearch({ title }) {
           !toggle && (
             buttonText[render] !== undefined
               ? buttonText[render].map(({ strCategory }, index) => (
-                index <= quatro && (
+                index <= quatro ? (
                   <button
                     data-testid={ `${strCategory}-category-filter` }
                     type="button"
@@ -63,6 +64,14 @@ function HeaderSearch({ title }) {
                     key={ index }
                   >
                     { strCategory }
+                  </button>
+                ) : index === cinco && (
+                  <button
+                    data-testid="All-category-filter"
+                    onClick={ handleStandard }
+                    type="button"
+                  >
+                    All
                   </button>
                 )
               )) : []
