@@ -1,5 +1,5 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import Styles from '../css/CardRecipes.module.css';
 // import RecipesContext from '../context/RecipesContext';
@@ -27,7 +27,7 @@ function CardRecipes(props) {
     id = idDrink;
   }
 
-  const path = `${pathname}/${id}`;
+  const path = `${pathname}${id}`;
 
   return (
     <Link to={ path }>
