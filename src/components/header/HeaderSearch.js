@@ -11,7 +11,7 @@ function HeaderSearch({ title }) {
   const [toggle, setToggle] = useState(false);
   const { recipesType,
     setRecipesType, buttonText,
-    render, handleCategory, setLocation } = useContext(RecipesContext);
+    render, handleCategory, setLocation, handleStandard } = useContext(RecipesContext);
   const quatro = 4;
   const cinco = 5;
 
@@ -33,14 +33,26 @@ function HeaderSearch({ title }) {
   return (
     // Requisito 9
     <header className={ styles.container }>
-      <Link to="/profile">
+      <div className={ styles.navbar }>
+        <Link to="/profile">
+          <input
+            type="image"
+            data-testid="profile-top-btn"
+            className={ styles.icon }
+            src={ profileIcon }
+            alt="Profile"
+          />
+        </Link>
+        <h1 data-testid="page-title">{title}</h1>
         <input
           type="image"
-          data-testid="profile-top-btn"
+          data-testid="search-top-btn"
           className={ styles.icon }
-          src={ profileIcon }
-          alt="Profile"
+          src={ searchIcon }
+          alt="Search"
+          onClick={ handleClick }
         />
+<<<<<<< HEAD
       </Link>
       <h1 data-testid="page-title">{title}</h1>
       <input
@@ -69,7 +81,35 @@ function HeaderSearch({ title }) {
               )) : index === cinco && <button type="button">All</button>
           )
         }
+=======
+>>>>>>> f1d10bcb0810ca1aedcc15781b35c0e9b39bc003
       </div>
+      <div className={ styles.category }>
+        {!toggle && (
+          buttonText[render] !== undefined
+            ? buttonText[render].map(({ strCategory }, index) => (
+              index <= quatro ? (
+                <button
+                  data-testid={ `${strCategory}-category-filter` }
+                  type="button"
+                  onClick={ handleCategory }
+                  key={ index }
+                >
+                  {strCategory}
+                </button>
+              ) : index === cinco && (
+                <button
+                  data-testid="All-category-filter"
+                  onClick={ handleStandard }
+                  type="button"
+                >
+                  All
+                </button>
+              )
+            )) : []
+        )}
+      </div>
+
       {
         toggle && (
           <SearchBar />

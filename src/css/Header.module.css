@@ -3,9 +3,8 @@
   background-color: var(--contrast-color);
   color: var(--dark-color);
   display: flex;
-  flex-direction: row;
+  flex-flow: row wrap;
   justify-content: space-between;
-  padding: 12px;
   position: fixed;
   top: 0;
   width: 360px;
@@ -14,4 +13,52 @@
 .icon {
   color: var(--dark-color);
   font-size: 24px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px;
+  width: 100%;
+}
+
+.category {
+  background-color: var(--main-color);
+  display: flex;
+  flex-flow: row wrap;
+  font-size: 16px;
+  justify-content: space-around;
+  padding: 4px;
+  width: 100%;
+}
+
+.category button {
+  background-color: var(--dark-color);
+  border: none;
+  color: var(--contrast-color);
+  font-size: 12px;
+  margin: 4px;
+  padding: 5px;
+  width: 31%;
+}
+
+.searchBar {
+  background-color: var(--main-color);
+  display: flex;
+  flex-flow: row wrap;
+  margin: 0;
+  padding: 0;
+}
+
+.searchInput {
+  background-color: var(--ligth-color);
+  border: 1px solid var(--constrast-font);
+  border-radius: 0;
+  margin: 0 8px;
+  width: 75%;
+}
+
+.searchBar button {
+  background-color: var(--dark-color);
+  color: var(--main-color);
 }

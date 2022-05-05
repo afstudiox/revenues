@@ -2,6 +2,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import RecipesContext from '../../context/RecipesContext';
+import styles from '../../css/Header.module.css';
 import { requestByIngredients, requestByLetter, requestByName } from '../../services/API';
 
 function SearchBar() {
@@ -64,13 +65,21 @@ function SearchBar() {
   };
 
   return (
-    <div>
+    <div className={ styles.searchBar }>
       <input
         type="text"
         onChange={ changeValue }
         value={ value }
         data-testid="search-input"
+        className={ styles.searchInput }
       />
+      <button
+        type="button"
+        data-testid="exec-search-btn"
+        onClick={ requestAPI }
+      >
+        Search
+      </button>
       <label htmlFor="ingredient">
         <input
           type="radio"
@@ -101,13 +110,6 @@ function SearchBar() {
         />
         First Letter
       </label>
-      <button
-        type="button"
-        data-testid="exec-search-btn"
-        onClick={ requestAPI }
-      >
-        Search
-      </button>
     </div>
   );
 }
