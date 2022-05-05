@@ -4,6 +4,7 @@ import RecipesContext from '../../context/RecipesContext';
 import shareIcon from '../../images/shareIcon.svg';
 import whiteHeart from '../../images/whiteHeartIcon.svg';
 import { requestByAll, requestRecipeDetail } from '../../services/API';
+import IngredientsList from '../IngredientsList';
 import './drinksRecipes.css';
 
 function DrinksRecipes() {
@@ -55,6 +56,20 @@ function DrinksRecipes() {
     }
   }, [recipeDetail]);
 
+  function recipeInProgress() {
+    const storageObj = JSON.parse(localStorage.getItem('inProgressRecipes'));
+    if (storageObj !== null) {
+      const storageKeys = Object.keys(storageObj.cocktails).find((element) => {
+        if (element === recipeDetail.drinks[0].idDrink) {
+          return element;
+        }
+        return null;
+      });
+      return storageKeys !== undefined ? 'Continue Recipe' : 'Start Recipe';
+    }
+    return 'Start Recipe';
+  }
+
   return (
     <div>
       {
@@ -77,14 +92,12 @@ function DrinksRecipes() {
             <h3>Ingredients</h3>
             <ul>
               {
-                ingredientsList.map((element, index) => (
-                  <li
-                    data-testid={ `${index}-ingredient-name-and-measure` }
-                    key={ index }
-                  >
-                    { measureList[index] === undefined ? `${element}`
-                      : `${element} - ${measureList[index]}`}
-                  </li>))
+                ingredientsList.map((element, index) => (<IngredientsList
+                  element={ element }
+                  index={ index }
+                  measureList={ measureList }
+                  key={ index }
+                />))
               }
             </ul>
             <p data-testid="instructions">{detailsRecipeArray[0][0].strInstructions}</p>
@@ -98,7 +111,7 @@ function DrinksRecipes() {
                 className="start-recipe"
                 data-testid="start-recipe-btn"
               >
-                Start recipe
+                {recipeInProgress()}
               </button>
             </Link>
           </div>

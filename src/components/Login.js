@@ -14,12 +14,18 @@ function Login() {
   // Requisitos 6, 7 e 8
   const submitButton = () => {
     const email = { email: user.email };
+    const inProgressRecipes = { cocktails: {
+    },
+    meals: {
+    } };
     localStorage.setItem('mealsToken', 1);
     localStorage.setItem('cocktailsToken', 1);
     localStorage.setItem('user', JSON.stringify(email));
     if (localStorage.setItem('doneRecipes', []) === null) {
       localStorage.setItem('doneRecipes', []);
     }
+
+    localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
   };
 
   return (

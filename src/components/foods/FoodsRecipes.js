@@ -4,6 +4,7 @@ import RecipesContext from '../../context/RecipesContext';
 import shareIcon from '../../images/shareIcon.svg';
 import whiteHeart from '../../images/whiteHeartIcon.svg';
 import { requestByAll, requestRecipeDetail } from '../../services/API';
+import IngredientsList from '../IngredientsList';
 import './foodsRecipes.css';
 
 function FoodsRecipes() {
@@ -63,15 +64,19 @@ function FoodsRecipes() {
     }
   }, [recipeDetail]);
 
-  // function RecipeInProgress() {
-  //   const storageObj = JSON.parse(localStorage.getItem('inProgressRecipes'));
-  //   return Object.keys(storageObj.meals).find((element) => {
-  //     if (element === recipeDetail.meals[0].idMeal) {
-  //       return true;
-  //     }
-  //     return false;
-  //   });
-  // }
+  function recipeInProgress() {
+    const storageObj = JSON.parse(localStorage.getItem('inProgressRecipes'));
+    if (storageObj !== null) {
+      const storageKeys = Object.keys(storageObj.meals).find((element) => {
+        if (element === recipeDetail.meals[0].idMeal) {
+          return element;
+        }
+        return null;
+      });
+      return storageKeys !== undefined ? 'Continue Recipe' : 'Start Recipe';
+    }
+    return 'Start Recipe';
+  }
 
   return (
     <div className="container">
@@ -95,14 +100,12 @@ function FoodsRecipes() {
             <h3>Ingredients</h3>
             <ul>
               {
-                ingredientsList.map((element, index) => (
-                  <li
-                    data-testid={ `${index}-ingredient-name-and-measure` }
-                    key={ index }
-                  >
-                    { measureList[index] === undefined ? `${element}`
-                      : `${element} - ${measureList[index]}`}
-                  </li>))
+                ingredientsList.map((element, index) => (<IngredientsList
+                  element={ element }
+                  index={ index }
+                  measureList={ measureList }
+                  key={ index }
+                />))
               }
             </ul>
             <p data-testid="instructions">{detailsRecipeArray[0][0].strInstructions}</p>
@@ -121,10 +124,10 @@ function FoodsRecipes() {
                 type="button"
                 data-testid="start-recipe-btn"
               >
-                {/* {
-                  RecipeInProgress() ? 'Continue recipe' : 'Start Recipe'
-                } */}
-                Start Recipe
+                {
+                  recipeInProgress()
+                }
+                {/* Start Recipe */}
               </button>
             </Link>
           </>
