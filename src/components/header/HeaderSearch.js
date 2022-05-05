@@ -52,37 +52,6 @@ function HeaderSearch({ title }) {
           alt="Search"
           onClick={ handleClick }
         />
-<<<<<<< HEAD
-      </Link>
-      <h1 data-testid="page-title">{title}</h1>
-      <input
-        type="image"
-        data-testid="search-top-btn"
-        className={ styles.icon }
-        src={ searchIcon }
-        alt="Search"
-        onClick={ handleClick }
-      />
-      <div>
-        {
-          !toggle && (
-            buttonText[render] !== undefined
-              ? buttonText[render].map(({ strCategory }, index) => (
-                index <= quatro && (
-                  <button
-                    data-testid={ `${strCategory}-category-filter` }
-                    type="button"
-                    onClick={ handleCategory }
-                    key={ index }
-                  >
-                    { strCategory }
-                  </button>
-                )
-              )) : index === cinco && <button type="button">All</button>
-          )
-        }
-=======
->>>>>>> f1d10bcb0810ca1aedcc15781b35c0e9b39bc003
       </div>
       <div className={ styles.category }>
         {!toggle && (

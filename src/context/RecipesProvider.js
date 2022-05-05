@@ -23,11 +23,7 @@ function RecipesProvider({ children }) {
   };
 
   const handleStandard = async () => {
-<<<<<<< HEAD
-    setRecipes(await requestByAll());
-=======
     setRecipes(await requestByAll(recipesType));
->>>>>>> f1d10bcb0810ca1aedcc15781b35c0e9b39bc003
   };
 
   const handleCategory = async ({ target }) => {
