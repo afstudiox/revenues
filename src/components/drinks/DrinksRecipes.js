@@ -1,9 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import RecipesContext from '../../context/RecipesContext';
-import shareIcon from '../../images/shareIcon.svg';
-import whiteHeart from '../../images/whiteHeartIcon.svg';
 import { requestByAll, requestRecipeDetail } from '../../services/API';
+import CardButtonShareAndFav from '../CardButtonShareAndFav';
 import IngredientsList from '../IngredientsList';
 import './drinksRecipes.css';
 
@@ -56,6 +55,7 @@ function DrinksRecipes() {
     }
   }, [recipeDetail]);
 
+  // Requisito 40
   function recipeInProgress() {
     const storageObj = JSON.parse(localStorage.getItem('inProgressRecipes'));
     if (storageObj !== null) {
@@ -82,12 +82,7 @@ function DrinksRecipes() {
               data-testid="recipe-photo"
             />
             <h2 data-testid="recipe-title">{detailsRecipeArray[0][0].strDrink}</h2>
-            <button type="button" data-testid="share-btn">
-              <img src={ shareIcon } alt="share button" />
-            </button>
-            <button type="button" data-testid="favorite-btn">
-              <img src={ whiteHeart } alt="favorite heart" />
-            </button>
+            <CardButtonShareAndFav />
             <h5 data-testid="recipe-category">{detailsRecipeArray[0][0].strAlcoholic}</h5>
             <h3>Ingredients</h3>
             <ul>
