@@ -2,21 +2,17 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import RecipesContext from '../../context/RecipesContext';
+import styles from '../../css/Header.module.css';
 import { requestByIngredients, requestByLetter, requestByName } from '../../services/API';
 
 function SearchBar() {
   const { setRecipes,
-    resultSize, recipesType, setRecipesType, recipes } = useContext(RecipesContext);
+    resultSize, recipesType/*  setRecipesType, */, recipes } = useContext(RecipesContext);
   const [selectedRadio, setSelectedRadio] = useState('');
   const [value, setValue] = useState('');
   const { location: { pathname } } = useHistory();
-  useEffect(() => {
-    if (pathname.includes('/drinks')) {
-      setRecipesType('cocktail');
-    } else {
-      setRecipesType('meal');
-    }
-  }, []);
+
+  console.log(recipesType);
 
   const history = useHistory();
 
@@ -69,13 +65,21 @@ function SearchBar() {
   };
 
   return (
-    <div>
+    <div className={ styles.searchBar }>
       <input
         type="text"
         onChange={ changeValue }
         value={ value }
         data-testid="search-input"
+        className={ styles.searchInput }
       />
+      <button
+        type="button"
+        data-testid="exec-search-btn"
+        onClick={ requestAPI }
+      >
+        Search
+      </button>
       <label htmlFor="ingredient">
         <input
           type="radio"
@@ -106,13 +110,6 @@ function SearchBar() {
         />
         First Letter
       </label>
-      <button
-        type="button"
-        data-testid="exec-search-btn"
-        onClick={ requestAPI }
-      >
-        Search
-      </button>
     </div>
   );
 }

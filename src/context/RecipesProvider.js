@@ -1,6 +1,11 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
-import { requestByAll } from '../services/API';
+import {
+  requestByAll,
+  requestFilterCategory,
+  requestTextButtonsMeals,
+  requestTextButtonsMealsCocktail,
+} from '../services/API';
 import RecipesContext from './RecipesContext';
 
 function RecipesProvider({ children }) {
@@ -10,15 +15,42 @@ function RecipesProvider({ children }) {
   const [resultSize, setResultSize] = useState(0);
   const [recipeDetail, setRecipeDetail] = useState({});
   const [recommended, setRecommended] = useState({});
-  // console.log('Recipes do provider =>', recipes);
+  const [buttonText, setButtonText] = useState([]);
+  const [location, setLocation] = useState('');
+  const [arrayCategory, setArrayCategory] = useState([]);
+  const [render, setRender] = useState('');
 
   const handleRequest = ({ target }) => {
-    setRecipesType(target.name);
+    console.log(target.name);
+  };
+
+  const handleStandard = async () => {
+    setRecipes(await requestByAll(recipesType));
+  };
+
+  const handleCategory = async ({ target }) => {
+    const { innerText } = target;
+    if (!arrayCategory.includes(innerText)) {
+      setRecipes(await requestFilterCategory(recipesType, innerText));
+      setArrayCategory([...arrayCategory, ...[innerText]]);
+    } else {
+      setRecipes(await requestByAll(recipesType));
+      setArrayCategory([]);
+    }
   };
 
   const dataValues = {
     // colocar estados e funções para os filhos aqui
     recipes,
+    buttonText,
+    location,
+    handleStandard,
+    handleCategory,
+    handleRequest,
+    setLocation,
+    render,
+    setRender,
+    setButtonText,
     recipesType,
     recipeDetail,
     recommended,
@@ -27,11 +59,8 @@ function RecipesProvider({ children }) {
     setRecipes,
     setRecipesType,
     resultSize,
-    handleRequest,
     setResultSize,
   };
-
-  // console.log('RecipesType do provider', recipesType);
 
   useEffect(() => {
     const key = Object.keys(recipes);
@@ -49,6 +78,19 @@ function RecipesProvider({ children }) {
     };
     setRec();
   }, [recipesType]);
+
+  useEffect(() => {
+    const request = async () => {
+      if (location.includes('/drinks')) {
+        setButtonText(await requestTextButtonsMealsCocktail());
+        setRender('drinks');
+      } else {
+        setButtonText(await requestTextButtonsMeals());
+        setRender('meals');
+      }
+    };
+    request();
+  }, [location]);
 
   return (
     <Provider value={ dataValues }>

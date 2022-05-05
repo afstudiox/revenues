@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import styles from '../css/Login.module.css';
 
 function Login() {
   const [user, setUser] = useState({ email: '', password: '' });
@@ -29,41 +30,43 @@ function Login() {
   };
 
   return (
-    <form>
-      {/* // Requisitos 2,3 e 4 */}
-      <h3>Login</h3>
-      <label htmlFor="email">
-        Email:
-        <input
-          type="email"
-          name="email"
-          placeholder="Your email..."
-          data-testid="email-input"
-          onChange={ handleChange }
-        />
-      </label>
-      <label htmlFor="password">
-        Password:
-        <input
-          type="password"
-          name="password"
-          placeholder="Your password..."
-          data-testid="password-input"
-          onChange={ handleChange }
-        />
-      </label>
-      <Link to="/foods">
-        <button
-          type="submit"
-          data-testid="login-submit-btn"
-          onClick={ submitButton }
-          disabled={ !(regxEmail
-            .test(user.email) && user.password.length > minPasswordLength) }
-        >
-          Enter
-        </button>
-      </Link>
-    </form>
+    <div className={ styles.container }>
+      <form>
+        {/* // Requisitos 2,3 e 4 */}
+        <h3>LOGIN</h3>
+        <label htmlFor="email">
+          {/* Email: [CSS - USAR SOMENTE PLACEHOLDER] */}
+          <input
+            type="email"
+            name="email"
+            placeholder="Your email..."
+            data-testid="email-input"
+            onChange={ handleChange }
+          />
+        </label>
+        <label htmlFor="password">
+          {/* Password: [CSS - USAR SOMENTE PLACEHOLDER] */}
+          <input
+            type="password"
+            name="password"
+            placeholder="Your password..."
+            data-testid="password-input"
+            onChange={ handleChange }
+          />
+        </label>
+        <Link to="/foods">
+          <button
+            type="submit"
+            data-testid="login-submit-btn"
+            onClick={ submitButton }
+            disabled={ !(regxEmail
+              .test(user.email) && user.password.length > minPasswordLength) }
+          >
+            Enter
+          </button>
+        </Link>
+      </form>
+    </div>
   );
 }
 
