@@ -41,6 +41,7 @@ function CardRecommendations(props) {
           data-testid={ `${index}-recomendation-card` }
           src={ thumb }
           alt={ name }
+          width="170px"
           className="recommendation-image"
         />
         <p data-testid={ `${index}-recomendation-title` }>{ name }</p>
