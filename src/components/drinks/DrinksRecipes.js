@@ -1,9 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
+// import '~slick-carousel/slick/slick-theme.css';
+// import '~slick-carousel/slick/slick.css';
 import RecipesContext from '../../context/RecipesContext';
 import { requestByAll, requestRecipeDetail } from '../../services/API';
 import CardButtonShareAndFav from '../CardButtonShareAndFav';
 import IngredientsList from '../IngredientsList';
+import Recommendations from '../Recommendations';
 import './drinksRecipes.css';
 
 function DrinksRecipes() {
@@ -14,14 +17,15 @@ function DrinksRecipes() {
     setRecipeDetail,
     setRecommended } = useContext(RecipesContext);
   const detailsRecipeArray = Object.values(recipeDetail);
+  const recommendedQtt = 6;
 
   async function requestDetails() {
     const id = pathname.split('/');
     const details = await requestRecipeDetail('cocktail', id[2]);
-    const recommend = await requestByAll('cocktail');
+    const recommend = await requestByAll('meal');
     setRecipeDetail(details);
     // Requisito 36
-    setRecommended(recommend);
+    setRecommended(recommend.meals.filter((_element, index) => index < recommendedQtt));
   }
 
   useEffect(() => {
@@ -80,6 +84,7 @@ function DrinksRecipes() {
               src={ detailsRecipeArray[0][0].strDrinkThumb }
               alt={ detailsRecipeArray[0][0].strDrink }
               data-testid="recipe-photo"
+              className="image-drink"
             />
             <h2 data-testid="recipe-title">{detailsRecipeArray[0][0].strDrink}</h2>
             <CardButtonShareAndFav />
@@ -97,9 +102,17 @@ function DrinksRecipes() {
             </ul>
             <p data-testid="instructions">{detailsRecipeArray[0][0].strInstructions}</p>
             {/* Card de receitas de comidas recomendadas */}
-            <section>
+            {/* https://stackoverflow.com/questions/69080597/%C3%97-typeerror-cannot-read-properties-of-undefined-reading-map */}
+            <Recommendations />
+            {/* <Slider { ...settings }>
+              { recommended?.meals?.filter((_element, index) => index < recommendedQtt)
+                .map((recipe, index) => (
+                  <CardRecipes key={ index } recipe={ recipe } index={ index } /> // Cheguei :D
+                ))}
+            </Slider> */}
+            {/* <section>
               <p data-testid="0-recomendation-card" />
-            </section>
+            </section> */}
             <Link to={ `${pathname}/in-progress` }>
               <button
                 type="button"

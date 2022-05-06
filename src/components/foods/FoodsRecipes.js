@@ -4,6 +4,7 @@ import RecipesContext from '../../context/RecipesContext';
 import { requestByAll, requestRecipeDetail } from '../../services/API';
 import CardButtonShareAndFav from '../CardButtonShareAndFav';
 import IngredientsList from '../IngredientsList';
+import Recommendations from '../Recommendations';
 import './foodsRecipes.css';
 
 function FoodsRecipes() {
@@ -15,6 +16,7 @@ function FoodsRecipes() {
   const [measureList, setMeasureList] = useState([]);
   const [youtubeEmbed, setYoutubeEmbed] = useState('');
   const detailsRecipeArray = Object.values(recipeDetail);
+  const recommendedQtt = 6;
 
   async function requestDetails() {
     const id = pathname.split('/');
@@ -22,7 +24,8 @@ function FoodsRecipes() {
     const recommend = await requestByAll('cocktail');
     setRecipeDetail(details);
     // Requisito 36
-    setRecommended(recommend);
+    setRecommended(recommend.drinks
+      .filter((_element, index) => index < recommendedQtt));
   }
 
   useEffect(() => {
@@ -111,7 +114,8 @@ function FoodsRecipes() {
               data-testid="video"
             />
             {/* Card de drinks recomendadas */}
-            <p data-testid="0-recomendation-card" />
+            <Recommendations />
+            {/* <p data-testid="0-recomendation-card" /> */}
             <Link to={ `${pathname}/in-progress` }>
               <button
                 className="start-recipe"

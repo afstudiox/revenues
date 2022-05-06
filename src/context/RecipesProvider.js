@@ -22,6 +22,7 @@ function RecipesProvider({ children }) {
 
   console.log('ButtonText =>', buttonText);
   console.log(arrayCategory);
+  console.log(recommended);
 
   const handleRequest = ({ target }) => {
     console.log(target.name);
