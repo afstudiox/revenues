@@ -44,3 +44,15 @@ export const requestFilterCategory = async (type, category) => {
     .then((response) => response.json());
   return request;
 };
+
+export const requestRandomMeal = async () => {
+  const request = await fetch('https://www.themealdb.com/api/json/v1/1/random.php')
+    .then((response) => response.json());
+  return request;
+};
+
+export const requestRandomCocktail = async () => {
+  const request = await fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php')
+    .then((response) => response.json());
+  return request;
+};

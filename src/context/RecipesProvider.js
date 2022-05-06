@@ -2,6 +2,8 @@ import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { requestByAll,
   requestFilterCategory,
+  requestRandomCocktail,
+  requestRandomMeal,
   requestTextButtonsMeals, requestTextButtonsMealsCocktail } from '../services/API';
 import RecipesContext from './RecipesContext';
 
@@ -12,8 +14,24 @@ function RecipesProvider({ children }) {
   const [resultSize, setResultSize] = useState(0);
   const [buttonText, setButtonText] = useState([]);
   const [location, setLocation] = useState('');
+  const [randomFoods, setRandomFoods] = useState({});
+  const [randomDrinks, setRandomDrinks] = useState({});
   const [arrayCategory, setArrayCategory] = useState([]);
   const [render, setRender] = useState('');
+
+  useEffect(() => {
+    const request = async () => {
+      setRandomFoods(await requestRandomMeal());
+    };
+    request();
+  }, []);
+
+  useEffect(() => {
+    const request = async () => {
+      setRandomDrinks(await requestRandomCocktail());
+    };
+    request();
+  }, []);
 
   console.log('ButtonText =>', buttonText);
   console.log(arrayCategory);
@@ -43,6 +61,8 @@ function RecipesProvider({ children }) {
     buttonText,
     location,
     handleStandard,
+    randomFoods,
+    randomDrinks,
     handleCategory,
     handleRequest,
     setLocation,
