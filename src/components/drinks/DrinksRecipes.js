@@ -101,18 +101,8 @@ function DrinksRecipes() {
               }
             </ul>
             <p data-testid="instructions">{detailsRecipeArray[0][0].strInstructions}</p>
-            {/* Card de receitas de comidas recomendadas */}
             {/* https://stackoverflow.com/questions/69080597/%C3%97-typeerror-cannot-read-properties-of-undefined-reading-map */}
             <Recommendations />
-            {/* <Slider { ...settings }>
-              { recommended?.meals?.filter((_element, index) => index < recommendedQtt)
-                .map((recipe, index) => (
-                  <CardRecipes key={ index } recipe={ recipe } index={ index } /> // Cheguei :D
-                ))}
-            </Slider> */}
-            {/* <section>
-              <p data-testid="0-recomendation-card" />
-            </section> */}
             <Link to={ `${pathname}/in-progress` }>
               <button
                 type="button"

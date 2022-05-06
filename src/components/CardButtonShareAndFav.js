@@ -1,12 +1,14 @@
 import clipboardCopy from 'clipboard-copy';
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+// import RecipesContext from '../context/RecipesContext';
 import blackHeart from '../images/blackHeartIcon.svg';
 import shareIcon from '../images/shareIcon.svg';
 import whiteHeart from '../images/whiteHeartIcon.svg';
 // Requisito dos botões
 function CardButtonShareAndFav() {
   const copy = clipboardCopy;
+  // const { recipeDetail } = useContext(RecipesContext);
   const [shareClicked, setShareClicked] = useState(false);
   const [favorite, setFavorite] = useState(false);
   const { location: { pathname } } = useHistory();
@@ -18,6 +20,10 @@ function CardButtonShareAndFav() {
 
   function favoriteRecipe() {
     setFavorite((prevState) => !prevState);
+    JSON.parse(localStorage.getItem('favoriteRecipes'));
+    // localStorage.setItem('favoriteRecipes', JSON.stringify([...favoriteRecipes, {
+    //   id: recipeDetail,
+    // }]));
   }
   // FOMOS CORTADOS
   useEffect(() => {

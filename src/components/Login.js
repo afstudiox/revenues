@@ -25,7 +25,7 @@ function Login() {
     if (localStorage.setItem('doneRecipes', []) === null) {
       localStorage.setItem('doneRecipes', []);
     }
-
+    localStorage.setItem('favoriteRecipes', JSON.stringify([]));
     localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
   };
 
