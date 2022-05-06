@@ -19,7 +19,7 @@ function CardButtonShareAndFav() {
   function favoriteRecipe() {
     setFavorite((prevState) => !prevState);
   }
-
+  // FOMOS CORTADOS
   useEffect(() => {
     const storageObj = JSON.parse(localStorage.getItem('favoriteRecipes'));
     if (storageObj !== null) {
@@ -36,31 +36,22 @@ function CardButtonShareAndFav() {
   return (
     <>
       <button
-        src={ shareIcon }
         type="button"
-        data-testid="share-btn"
         onClick={ copyToClipBoard }
       >
-        <img src={ shareIcon } alt="share button" />
+        <img data-testid="share-btn" src={ shareIcon } alt="share button" />
       </button>
 
-      <input
-        type="image"
-        data-testid="favorite-btn"
-        src={ favorite ? blackHeart : whiteHeart }
-        alt="Profile"
-        onClick={ favoriteRecipe }
-      />
-      {/* <button
+      <button
         type="button"
-        data-testid="favorite-btn"
         onClick={ favoriteRecipe }
-        src={ !favorite ? whiteHeart : blackHeart }
       >
-        {!favorite
-          ? (<img src={ whiteHeart } alt="favorite heart" />)
-          : (<img src={ blackHeart } alt="favorite heart" />) }
-      </button> */}
+        <img
+          data-testid="favorite-btn"
+          src={ favorite ? blackHeart : whiteHeart }
+          alt="Profile"
+        />
+      </button>
       {shareClicked && (<p>Link copied!</p>)}
     </>
   );

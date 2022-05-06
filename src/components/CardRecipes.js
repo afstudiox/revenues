@@ -27,7 +27,8 @@ function CardRecipes(props) {
     id = idDrink;
   }
 
-  const path = `${pathname}${id}`;
+  const path = `${pathname}/${id}`;
+  console.log(path);
 
   return (
     <Link to={ path }>
@@ -52,7 +53,7 @@ CardRecipes.propTypes = {
   strDrink: PropTypes.string.isRequired,
   strMealThumb: PropTypes.string.isRequired,
   strMeal: PropTypes.string.isRequired,
-  index: PropTypes.string.isRequired,
+  index: PropTypes.number.isRequired,
   recipe: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
