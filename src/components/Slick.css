@@ -4,15 +4,9 @@
   padding: 0;
   position: absolute;}
 
-.slick-dots li button:before, .slick-next:before, .slick-prev:before { font-family: slick;
+.slick-dots li button:before, .slick-next:before, .slick-prev:before {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;}
-
-/* @font-face { font-family: slick;
-  font-style: normal;
-  font-weight: 400;
-  src: url(fonts/slick.eot);
-  src: url(fonts/slick.eot?#iefix) format('embedded-opentype') , url(fonts/slick.woff) format('woff') , url(fonts/slick.ttf) format('truetype') , url(fonts/slick.svg#slick) format('svg');} */
 
 .slick-next, .slick-prev { background: 0 0;
   border: none;
@@ -26,15 +20,15 @@
   transform: translate(0, -50%);
   width: 20px;}
 
+.slick-prev { left: -25px;}
+
+.slick-next { right: -25px;}
+
 .slick-next:focus, .slick-next:hover, .slick-prev:focus, .slick-prev:hover {
   background: 0 0;
   color: transparent;
   outline: 0;
 }
-
-.slick-next:focus:before, .slick-next:hover:before, .slick-prev:focus:before, .slick-prev:hover:before { opacity: 1;}
-
-.slick-next.slick-disabled:before, .slick-prev.slick-disabled:before { opacity: 0.25;}
 
 .slick-next:before, .slick-prev:before {
   color: white;
@@ -43,16 +37,24 @@
   opacity: 0.75;
 }
 
-.slick-prev { left: -25px;}
-
-[ dir = 'rtl' ] .slick-prev { left: auto;
-  right: -25px;}
-
 .slick-prev:before { content: '←';}
 
 .slick-next:before, [ dir = 'rtl' ] .slick-prev:before { content: '→';}
 
-.slick-next { right: -25px;}
+.slick-next:focus:before, .slick-next:hover:before {
+  opacity: 1;
+}
+
+.slick-prev:focus:before, .slick-prev:hover:before {
+  opacity: 1;
+}
+
+.slick-next.slick-disabled:before, .slick-prev.slick-disabled:before { opacity: 0.25;}
+
+
+[ dir = 'rtl' ] .slick-prev { left: auto;
+  right: -25px;}
+
 
 [ dir = 'rtl' ] .slick-next { left: -25px;
   right: auto;}
@@ -75,7 +77,7 @@
   position: relative;
   width: 20px;}
 
-/* .slick-dots li button { background: 0 0;
+.slick-dots li button { background: 0 0;
   border: 0;
   color: transparent;
   cursor: pointer;
@@ -89,8 +91,6 @@
 
 .slick-dots li button:focus, .slick-dots li button:hover { outline: 0;}
 
-.slick-dots li button:focus:before, .slick-dots li button:hover:before { opacity: 1;}
-
 .slick-dots li button:before { color: black;
   content: '•';
   font-size: 6px;
@@ -103,5 +103,5 @@
   top: 0;
   width: 20px;}
 
-.slick-dots li.slick-active button:before { color: black;
-  opacity: 0.75;} */
+.slick-dots li button:focus:before, .slick-dots li button:hover:before { opacity: 1;}
+
