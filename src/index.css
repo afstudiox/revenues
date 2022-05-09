@@ -45,7 +45,8 @@ input {
 button {
   border: none;
   border-radius: 4px;
-  padding: 50px;
+  /* reduzi o padding para retornar */
+  padding: 10px;
 }
 
 .generalContainer {
