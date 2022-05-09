@@ -39,10 +39,15 @@ function App() {
               path="/drinks/:produto"
               render={ (props) => <DrinksRecipes { ...props } /> }
             />
-            <Route path={ `/foods/${'...'}/in-progress` } component={ FoodInProgress } />
             <Route
-              path={ `/drinks/${'...'}/in-progress` }
-              component={ DrinkInProgress }
+              exact
+              path="/foods/:produto/in-progress"
+              render={ (props) => <FoodInProgress { ...props } /> }
+            />
+            <Route
+              exact
+              path="/drinks/:produto/in-progress"
+              render={ (props) => <DrinkInProgress { ...props } /> }
             />
             <Route exact path="/explore" component={ Explore } />
             <Route exact path="/explore/foods" component={ ExploreFoods } />
