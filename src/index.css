@@ -28,6 +28,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
 }
 
+.clicked {
+  text-decoration: line-through;
+} 
+
 /* body {
   background-image: url(./images/patternFood.jpg);
   background-repeat: repeat;

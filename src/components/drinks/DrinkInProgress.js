@@ -83,16 +83,14 @@ function DrinksRecipes() {
             <CardButtonShareAndFav />
             <h5 data-testid="recipe-category">{detailsRecipeArray[0][0].strAlcoholic}</h5>
             <h3>Ingredients</h3>
-            <ul>
-              {
-                ingredientsList.map((element, index) => (<IngredientsListCheckBox
-                  element={ element }
-                  index={ index }
-                  measureList={ measureList }
-                  key={ index }
-                />))
-              }
-            </ul>
+            {
+              ingredientsList.map((element, index) => (<IngredientsListCheckBox
+                element={ element }
+                index={ index }
+                measureList={ measureList }
+                key={ index }
+              />))
+            }
             <p data-testid="instructions">{detailsRecipeArray[0][0].strInstructions}</p>
             <button type="submit" data-testid="finish-recipe-btn"> Finish Recipe</button>
           </div>
