@@ -33,9 +33,6 @@ function RecipesProvider({ children }) {
     request();
   }, []);
 
-  console.log('ButtonText =>', buttonText);
-  console.log(arrayCategory);
-
   const handleRequest = ({ target }) => {
     console.log(target.name);
   };

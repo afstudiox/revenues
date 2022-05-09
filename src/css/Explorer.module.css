@@ -1,5 +1,12 @@
 .container {
   display: flex;
-  flex-direction: column;
+  flex-flow: row wrap;
   justify-content: center;
+  align-items: center;
+  align-content: center;
+  margin-top: 100px;
+}
+
+.container button {
+  width: 90%;
 }
