@@ -15,12 +15,12 @@ function DrinksRecipes() {
   const { location: { pathname } } = useHistory();
   const { recipeDetail,
     setRecipeDetail,
-    setRecommended } = useContext(RecipesContext);
+    setRecommended, setFavoriteRecipe } = useContext(RecipesContext);
   const detailsRecipeArray = Object.values(recipeDetail);
   const recommendedQtt = 6;
+  const id = pathname.split('/');
 
   async function requestDetails() {
-    const id = pathname.split('/');
     const details = await requestRecipeDetail('cocktail', id[2]);
     const recommend = await requestByAll('meal');
     setRecipeDetail(details);
@@ -56,6 +56,18 @@ function DrinksRecipes() {
         }
         return acc;
       }, []));
+
+      setFavoriteRecipe(
+        {
+          id: id[2],
+          type: 'drink',
+          nationality: '',
+          category: recipeDetail.drinks[0].strCategory,
+          alcoholicOrNot: recipeDetail.drinks[0].strAlcoholic,
+          name: recipeDetail.drinks[0].strDrink,
+          image: recipeDetail.drinks[0].strDrinkThumb,
+        },
+      );
     }
   }, [recipeDetail]);
 

@@ -19,10 +19,19 @@ function RecipesProvider({ children }) {
   const [location, setLocation] = useState('');
   const [arrayCategory, setArrayCategory] = useState([]);
   const [render, setRender] = useState('');
+  const [favoriteRecipe, setFavoriteRecipe] = useState({
+    id: '',
+    type: '',
+    nationality: '',
+    category: '',
+    alcoholicOrNot: '',
+    name: '',
+    image: '',
+  });
 
-  console.log('ButtonText =>', buttonText);
-  console.log(arrayCategory);
-  console.log(recommended);
+  // console.log('ButtonText =>', buttonText);
+  // console.log(arrayCategory);
+  // console.log(recommended);
 
   const handleRequest = ({ target }) => {
     console.log(target.name);
@@ -47,6 +56,7 @@ function RecipesProvider({ children }) {
     // colocar estados e funções para os filhos aqui
     recipes,
     buttonText,
+    favoriteRecipe,
     location,
     handleStandard,
     handleCategory,
@@ -58,6 +68,7 @@ function RecipesProvider({ children }) {
     recipesType,
     recipeDetail,
     recommended,
+    setFavoriteRecipe,
     setRecommended,
     setRecipeDetail,
     setRecipes,

@@ -11,15 +11,15 @@ function FoodsRecipes() {
   const { location: { pathname } } = useHistory();
   const { recipeDetail,
     setRecipeDetail,
-    setRecommended } = useContext(RecipesContext);
+    setRecommended, setFavoriteRecipe } = useContext(RecipesContext);
   const [ingredientsList, setIngredientsList] = useState([]);
   const [measureList, setMeasureList] = useState([]);
   const [youtubeEmbed, setYoutubeEmbed] = useState('');
   const detailsRecipeArray = Object.values(recipeDetail);
   const recommendedQtt = 6;
+  const id = pathname.split('/');
 
   async function requestDetails() {
-    const id = pathname.split('/');
     const details = await requestRecipeDetail('meal', id[2]);
     const recommend = await requestByAll('cocktail');
     setRecipeDetail(details);
@@ -63,6 +63,17 @@ function FoodsRecipes() {
   useEffect(() => {
     if (detailsRecipeArray.length !== 0) {
       setList();
+      setFavoriteRecipe(
+        {
+          id: id[2],
+          type: 'food',
+          nationality: recipeDetail.meals[0].strArea,
+          category: recipeDetail.meals[0].strCategory,
+          alcoholicOrNot: '',
+          name: recipeDetail.meals[0].strMeal,
+          image: recipeDetail.meals[0].strMealThumb,
+        },
+      );
     }
   }, [recipeDetail]);
 

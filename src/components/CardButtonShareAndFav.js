@@ -1,29 +1,35 @@
 import clipboardCopy from 'clipboard-copy';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
-// import RecipesContext from '../context/RecipesContext';
+import RecipesContext from '../context/RecipesContext';
 import blackHeart from '../images/blackHeartIcon.svg';
 import shareIcon from '../images/shareIcon.svg';
 import whiteHeart from '../images/whiteHeartIcon.svg';
 // Requisito dos botões
 function CardButtonShareAndFav() {
   const copy = clipboardCopy;
-  // const { recipeDetail } = useContext(RecipesContext);
+  const { recipeDetail, favoriteRecipe } = useContext(RecipesContext);
   const [shareClicked, setShareClicked] = useState(false);
-  const [favorite, setFavorite] = useState(false);
+  const [favoriteImg, setFavoriteImg] = useState(false);
   const { location: { pathname } } = useHistory();
+
+  useEffect(() => {
+    console.log(recipeDetail);
+  }, []);
+
+  // const { recipeDetail } = useContext(RecipesContext);
   // const lazaro = false;
   function copyToClipBoard() {
     copy(`http://localhost:3000${pathname}`);
     setShareClicked(true);
   }
 
-  function favoriteRecipe() {
-    setFavorite((prevState) => !prevState);
-    JSON.parse(localStorage.getItem('favoriteRecipes'));
-    // localStorage.setItem('favoriteRecipes', JSON.stringify([...favoriteRecipes, {
-    //   id: recipeDetail,
-    // }]));
+  function handleFavoriteRecipe() {
+    setFavoriteImg((prevState) => !prevState);
+    // const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
+    localStorage.setItem('favoriteRecipes',
+      JSON.stringify([favoriteRecipe]));
+    console.log(favoriteRecipe);
   }
   // FOMOS CORTADOS
   useEffect(() => {
@@ -32,7 +38,7 @@ function CardButtonShareAndFav() {
       const recipeId = pathname.split('/');
       Object.values(storageObj).find((element) => {
         if (element.id === recipeId[2]) {
-          setFavorite((prevState) => !prevState);
+          setFavoriteImg((prevState) => !prevState);
         }
         return null;
       });
@@ -50,11 +56,11 @@ function CardButtonShareAndFav() {
 
       <button
         type="button"
-        onClick={ favoriteRecipe }
+        onClick={ handleFavoriteRecipe }
       >
         <img
           data-testid="favorite-btn"
-          src={ favorite ? blackHeart : whiteHeart }
+          src={ favoriteImg ? blackHeart : whiteHeart }
           alt="Profile"
         />
       </button>
