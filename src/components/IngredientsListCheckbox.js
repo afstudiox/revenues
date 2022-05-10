@@ -1,8 +1,17 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+// import { useHistory } from 'react-router-dom';
 
 function IngredientsListCheckBox({ element, index, measureList }) {
+  // const { location: { pathname } } = useHistory();
+
   const checkIngredient = ({ target }) => {
+    JSON.parse(localStorage.getItem('inProgressRecipes'));
+    // const cocktails = Object.keys(recipeInProgress.cocktails);
+    // const meals = Object.keys(recipeInProgress.meals);
+    // if (meals.find((id) => id.includes(pathname.split('/')[2])) !== null) {
+    //  console.log('teste');
+    // }
     if (target.checked) {
       target.parentNode.className = 'clicked';
     } else {
