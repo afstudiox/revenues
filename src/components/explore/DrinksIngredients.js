@@ -13,26 +13,25 @@ function DrinksIngredients() {
   return (
     <>
       <Header title="Explore Ingredients" />
-      <div style={ { padding: '200px' } }>
-        {
-          ingredientsDrinks.map(({ name, image }, index) => (
-            <Link to="/drinks" key={ index }>
-              <div
-                onClick={ handleNameIngredientDrink }
-                data-testid={ `${index}-ingredient-card` }
-                role="presentation"
-              >
-                <img
-                  data-testid={ `${index}-card-img` }
-                  src={ image }
-                  alt={ name }
-                />
-                <p data-testid={ `${index}-card-name` }>{ name }</p>
-              </div>
-            </Link>
-          ))
-        }
-      </div>
+      {
+        ingredientsDrinks.map(({ name, image }, index) => (
+          <Link to="/drinks" key={ index }>
+            <div
+              onClick={ handleNameIngredientDrink }
+              data-testid={ `${index}-ingredient-card` }
+              role="presentation"
+            >
+              <img
+                width="400px"
+                data-testid={ `${index}-card-img` }
+                src={ image }
+                alt={ name }
+              />
+              <p data-testid={ `${index}-card-name` }>{ name }</p>
+            </div>
+          </Link>
+        ))
+      }
       <Footer />
     </>
   );

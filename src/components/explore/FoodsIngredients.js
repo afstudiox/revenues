@@ -25,6 +25,7 @@ function FoodsIngredients() {
                 data-testid={ `${index}-card-img` }
                 src={ image }
                 alt={ name }
+                width="800px"
               />
               <p data-testid={ `${index}-card-name` }>{ name }</p>
             </div>

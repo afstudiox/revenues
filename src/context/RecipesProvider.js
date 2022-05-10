@@ -11,8 +11,7 @@ import {
   screenDrinksImageIngredients,
   screenDrinksIngredients,
   screenFoodsImageIngredients,
-  screenFoodsIngredients,
-} from '../services/API';
+  screenFoodsIngredients } from '../services/API';
 import RecipesContext from './RecipesContext';
 
 function RecipesProvider({ children }) {
@@ -28,6 +27,7 @@ function RecipesProvider({ children }) {
   const [randomDrinks, setRandomDrinks] = useState({});
   const [arrayCategory, setArrayCategory] = useState([]);
   const [render, setRender] = useState('');
+  const [textRender, setTextRender] = useState('');
   const [favoriteRecipe, setFavoriteRecipe] = useState({
     id: '',
     type: '',
@@ -43,7 +43,16 @@ function RecipesProvider({ children }) {
   const [ingredientsDrinks, setIngredientsDrinks] = useState(
     [],
   );
-  const [textRender, setTextRender] = useState('');
+
+  const handleNameIngredientMeal = async ({ target }) => {
+    const { innerText } = target.nextElementSibling;
+    setRecipes(await requestByIngredients('meal', innerText));
+  };
+
+  const handleNameIngredientDrink = async ({ target }) => {
+    const { innerText } = target.nextElementSibling;
+    setTextRender(innerText);
+  };
 
   useEffect(() => {
     const request = async () => {
@@ -59,18 +68,8 @@ function RecipesProvider({ children }) {
     request();
   }, []);
 
-  const handleNameIngredientMeal = async ({ target }) => {
-    const { innerText } = target.nextElementSibling;
-    setRecipes(await requestByIngredients('meal', innerText));
-  };
-
-  const handleNameIngredientDrink = async ({ target }) => {
-    const { innerText } = target.nextElementSibling;
-    setTextRender(innerText);
-  };
-
-  const handleRequest = ({ target }) => {
-    console.log(target.name);
+  const handleRequest = (/* { target } */) => {
+    /* console.log(target.name); */
   };
 
   const handleStandard = async () => {
@@ -135,12 +134,12 @@ function RecipesProvider({ children }) {
     randomDrinks,
     handleCategory,
     handleNameIngredientMeal,
-    ingredientsFoods,
-    ingredientsDrinks,
     handleRequest,
     setLocation,
     render,
     setRender,
+    ingredientsFoods,
+    ingredientsDrinks,
     setButtonText,
     recipesType,
     recipeDetail,
@@ -153,6 +152,39 @@ function RecipesProvider({ children }) {
     resultSize,
     setResultSize,
   };
+
+  useEffect(() => {
+    const doze = 12;
+    const iFoods = async () => {
+      const iFood = await screenFoodsIngredients();
+      iFood.forEach(({ strIngredient }, index) => {
+        if (index < doze) {
+          setIngredientsFoods(
+            (prevState) => [...prevState,
+              { name: strIngredient, image: screenFoodsImageIngredients(strIngredient) }],
+          );
+        }
+      });
+    };
+    iFoods();
+  }, []);
+
+  useEffect(() => {
+    const doze = 12;
+    const iDrinks = async () => {
+      const iDrink = await screenDrinksIngredients();
+      iDrink.forEach(async ({ strIngredient1 }, index) => {
+        if (index < doze) {
+          setIngredientsDrinks(
+            (prevState) => [...prevState,
+              { name: strIngredient1,
+                image: screenDrinksImageIngredients(strIngredient1) }],
+          );
+        }
+      });
+    };
+    iDrinks();
+  }, []);
 
   useEffect(() => {
     const key = Object.keys(recipes);
@@ -174,8 +206,6 @@ function RecipesProvider({ children }) {
     };
     setRec();
   }, [textRender, recipesType]);
-
-  console.log(textRender);
 
   useEffect(() => {
     const request = async () => {
