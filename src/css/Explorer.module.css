@@ -1,5 +1,19 @@
 .container {
+  align-content: center;
+  align-items: center;
   display: flex;
-  flex-direction: column;
+  flex-flow: row wrap;
   justify-content: center;
+  margin-top: 100px;
+}
+
+.container button {
+  background-color: var(--white-color);
+  border: 2px solid var(--ligth-color);
+  border-radius: 4px;
+  color: var(--contrast-color);
+  height: 80px;
+  margin: 8px;
+  padding: 20px 10px;
+  width: 90%;
 }
