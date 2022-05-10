@@ -21,8 +21,14 @@ export const requestByLetter = async (recipesType, letter) => {
   return request;
 };
 
-export const requestByAll = async (teste) => {
-  const request = await fetch(`https://www.the${teste}db.com/api/json/v1/1/search.php?s=`)
+export const requestByAll = async (recipesType) => {
+  const request = await fetch(`https://www.the${recipesType}db.com/api/json/v1/1/search.php?s=`)
+    .then((response) => response.json());
+  return request;
+};
+
+export const requestRecipeDetail = async (recipesType, recipeID) => {
+  const request = await fetch(`https://www.the${recipesType}db.com/api/json/v1/1/lookup.php?i=${recipeID}`)
     .then((response) => response.json());
   return request;
 };
@@ -55,4 +61,26 @@ export const requestRandomCocktail = async () => {
   const request = await fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php')
     .then((response) => response.json());
   return request;
+};
+
+export const screenFoodsIngredients = async () => {
+  const request = await fetch('https://www.themealdb.com/api/json/v1/1/list.php?i=list')
+    .then((response) => response.json());
+  return request.meals;
+};
+
+export const screenFoodsImageIngredients = (imageFood) => {
+  const url = `https://www.themealdb.com/images/ingredients/${imageFood}-Small.png`;
+  return url;
+};
+
+export const screenDrinksIngredients = async () => {
+  const request = await fetch('https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list')
+    .then((response) => response.json());
+  return request.drinks;
+};
+
+export const screenDrinksImageIngredients = (imageDrink) => {
+  const url = `https://www.thecocktaildb.com/images/ingredients/${imageDrink}-Small.png`;
+  return url;
 };

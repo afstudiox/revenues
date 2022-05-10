@@ -1,12 +1,16 @@
 .container {
+  align-items: center;
+  align-content: center;
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  align-items: center;
-  align-content: center;
   margin-top: 100px;
 }
 
 .container button {
+  background-color: var(--ligth-color);
+  height: 80px;
+  margin: 8px;
+  padding: 20px;
   width: 90%;
 }

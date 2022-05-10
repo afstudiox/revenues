@@ -80,36 +80,38 @@ function SearchBar() {
       >
         Search
       </button>
-      <label htmlFor="ingredient">
-        <input
-          type="radio"
-          id="ingredient"
-          name="search"
-          onChange={ getSelectedRadio }
-          data-testid="ingredient-search-radio"
-        />
-        Ingredient
-      </label>
-      <label htmlFor="name">
-        <input
-          type="radio"
-          id="name"
-          name="search"
-          onChange={ getSelectedRadio }
-          data-testid="name-search-radio"
-        />
-        Name
-      </label>
-      <label htmlFor="letter">
-        <input
-          type="radio"
-          id="letter"
-          name="search"
-          onChange={ getSelectedRadio }
-          data-testid="first-letter-search-radio"
-        />
-        First Letter
-      </label>
+      <div className={ styles.radios }>
+        <label htmlFor="ingredient">
+          <input
+            type="radio"
+            id="ingredient"
+            name="search"
+            onChange={ getSelectedRadio }
+            data-testid="ingredient-search-radio"
+          />
+          Ingredient
+        </label>
+        <label htmlFor="name">
+          <input
+            type="radio"
+            id="name"
+            name="search"
+            onChange={ getSelectedRadio }
+            data-testid="name-search-radio"
+          />
+          Name
+        </label>
+        <label htmlFor="letter">
+          <input
+            type="radio"
+            id="letter"
+            name="search"
+            onChange={ getSelectedRadio }
+            data-testid="first-letter-search-radio"
+          />
+          First Letter
+        </label>
+      </div>
     </div>
   );
 }
