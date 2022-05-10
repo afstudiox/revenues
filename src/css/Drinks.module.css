@@ -4,10 +4,12 @@
   display: flex;
   flex-flow: row wrap;
   font-size: 16px;
-  height: 400px;
   justify-content: space-around;
   margin-bottom: 74px;
   margin-top: 120px;
+  max-height: 400px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
   width: 360px;
 }
 
