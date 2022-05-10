@@ -1,6 +1,6 @@
 .container {
-  align-items: center;
   align-content: center;
+  align-items: center;
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
