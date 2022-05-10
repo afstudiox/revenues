@@ -3,7 +3,7 @@ import RecipesContext from '../../context/RecipesContext';
 import Footer from '../Footer';
 import HeaderSearch from '../header/HeaderSearch';
 import CardRecipes from '../CardRecipes';
-import Styles from '../../css/Foods.module.css';
+import styles from '../../css/Foods.module.css';
 
 function Foods() {
   const { recipes } = useContext(RecipesContext);
@@ -19,7 +19,7 @@ function Foods() {
   return (
     <>
       <HeaderSearch title="Foods" />
-      <div className={ Styles.container }>
+      <div className={ styles.container }>
         {type.length
           && recipes[type[0]] !== null
           && recipes[type[0]].filter((_recipe, index) => index <= magic)

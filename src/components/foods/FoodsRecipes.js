@@ -5,6 +5,7 @@ import { requestByAll, requestRecipeDetail } from '../../services/API';
 import CardButtonShareAndFav from '../CardButtonShareAndFav';
 import IngredientsList from '../IngredientsList';
 import Recommendations from '../Recommendations';
+import styles from '../../css/Recipes.module.css';
 import './foodsRecipes.css';
 
 function FoodsRecipes() {
@@ -92,38 +93,53 @@ function FoodsRecipes() {
   }
 
   return (
-    <div className="container">
+    <div>
       {
         detailsRecipeArray.length === 1
         && (
-          <>
+          <div className={ styles.container }>
             <img
               src={ detailsRecipeArray[0][0].strMealThumb }
               alt={ detailsRecipeArray[0][0].strMeal }
               data-testid="recipe-photo"
             />
-            <h2 data-testid="recipe-title">{detailsRecipeArray[0][0].strMeal}</h2>
-            <CardButtonShareAndFav />
-            <h5 data-testid="recipe-category">{detailsRecipeArray[0][0].strCategory}</h5>
-            <h3>Ingredients</h3>
-            <ul>
-              {
-                ingredientsList.map((element, index) => (<IngredientsList
-                  element={ element }
-                  index={ index }
-                  measureList={ measureList }
-                  key={ index }
-                />))
-              }
-            </ul>
-            <p data-testid="instructions">{detailsRecipeArray[0][0].strInstructions}</p>
-            <iframe
-              width="300"
-              height="220"
-              src={ youtubeEmbed }
-              title={ detailsRecipeArray[0][0].strMeal }
-              data-testid="video"
-            />
+            <div className={ styles.recipe }>
+              <h2 data-testid="recipe-title">{detailsRecipeArray[0][0].strMeal}</h2>
+              <h5
+                data-testid="recipe-category"
+              >
+                {detailsRecipeArray[0][0].strCategory}
+
+              </h5
+              >
+              <div className={ styles.buttons }>
+                <CardButtonShareAndFav />
+              </div>
+            </div>
+            <div className={ styles.ingredients }>
+              <h3>Ingredients</h3>
+              <ul>
+                {
+                  ingredientsList.map((element, index) => (<IngredientsList
+                    element={ element }
+                    index={ index }
+                    measureList={ measureList }
+                    key={ index }
+                  />))
+                }
+              </ul>
+            </div>
+            <div className={ styles.instructions }>
+              <h3>Instructions</h3>
+              <p data-testid="instructions">{detailsRecipeArray[0][0].strInstructions}</p>
+              <iframe
+                width="300"
+                height="220"
+                src={ youtubeEmbed }
+                title={ detailsRecipeArray[0][0].strMeal }
+                data-testid="video"
+              />
+            </div>
             {/* Card de drinks recomendadas */}
             <Recommendations />
             {/* <p data-testid="0-recomendation-card" /> */}
@@ -139,7 +155,7 @@ function FoodsRecipes() {
                 {/* Start Recipe */}
               </button>
             </Link>
-          </>
+          </div>
         )
       }
     </div>

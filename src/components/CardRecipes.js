@@ -1,8 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import Styles from '../css/CardRecipes.module.css';
-// import RecipesContext from '../context/RecipesContext';
+import styles from '../css/CardRecipes.module.css';
 
 function CardRecipes(props) {
   const { recipe, index } = props;
@@ -28,14 +27,13 @@ function CardRecipes(props) {
   }
 
   const path = `${pathname}/${id}`;
-  console.log(path);
 
   return (
     <Link to={ path }>
       <section
         key={ index }
         data-testid={ `${index}-recipe-card` }
-        className={ Styles.container }
+        className={ styles.container }
       >
         <img
           data-testid={ `${index}-card-img` }

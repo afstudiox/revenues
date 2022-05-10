@@ -6,12 +6,23 @@
   justify-content: center;
 }
 
+.container p {
+  margin-bottom: 100px;
+  text-align: center;
+  width: 100%;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 80%;
+}
+
 .container button {
   background-color: var(--ligth-color);
   border-radius: 4px;
   color: var(--dark-color);
-  height: 80px;
   margin: 8px;
-  padding: 20px 10px;
-  width: 90%;
+  width: 100%;
 }

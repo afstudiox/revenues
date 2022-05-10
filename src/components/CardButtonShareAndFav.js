@@ -5,6 +5,8 @@ import RecipesContext from '../context/RecipesContext';
 import blackHeart from '../images/blackHeartIcon.svg';
 import shareIcon from '../images/shareIcon.svg';
 import whiteHeart from '../images/whiteHeartIcon.svg';
+import styles from '../css/Recipes.module.css';
+
 // Requisito dos botões
 function CardButtonShareAndFav() {
   const copy = clipboardCopy;
@@ -47,24 +49,29 @@ function CardButtonShareAndFav() {
 
   return (
     <>
-      <button
-        type="button"
-        onClick={ copyToClipBoard }
-      >
-        <img data-testid="share-btn" src={ shareIcon } alt="share button" />
-      </button>
+      <div className={ styles.message }>
+        {shareClicked && (<p>Link copied!</p>)}
+      </div>
 
-      <button
-        type="button"
-        onClick={ handleFavoriteRecipe }
-      >
-        <img
-          data-testid="favorite-btn"
-          src={ favoriteImg ? blackHeart : whiteHeart }
-          alt="Profile"
-        />
-      </button>
-      {shareClicked && (<p>Link copied!</p>)}
+      <div className={ styles.btnShare }>
+        <button
+          type="button"
+          onClick={ copyToClipBoard }
+        >
+          <img data-testid="share-btn" src={ shareIcon } alt="share button" />
+        </button>
+
+        <button
+          type="button"
+          onClick={ handleFavoriteRecipe }
+        >
+          <img
+            data-testid="favorite-btn"
+            src={ favoriteImg ? blackHeart : whiteHeart }
+            alt="Profile"
+          />
+        </button>
+      </div>
     </>
   );
 }
