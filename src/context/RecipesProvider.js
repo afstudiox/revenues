@@ -154,39 +154,6 @@ function RecipesProvider({ children }) {
   };
 
   useEffect(() => {
-    const doze = 12;
-    const iFoods = async () => {
-      const iFood = await screenFoodsIngredients();
-      iFood.forEach(({ strIngredient }, index) => {
-        if (index < doze) {
-          setIngredientsFoods(
-            (prevState) => [...prevState,
-              { name: strIngredient, image: screenFoodsImageIngredients(strIngredient) }],
-          );
-        }
-      });
-    };
-    iFoods();
-  }, []);
-
-  useEffect(() => {
-    const doze = 12;
-    const iDrinks = async () => {
-      const iDrink = await screenDrinksIngredients();
-      iDrink.forEach(async ({ strIngredient1 }, index) => {
-        if (index < doze) {
-          setIngredientsDrinks(
-            (prevState) => [...prevState,
-              { name: strIngredient1,
-                image: screenDrinksImageIngredients(strIngredient1) }],
-          );
-        }
-      });
-    };
-    iDrinks();
-  }, []);
-
-  useEffect(() => {
     const key = Object.keys(recipes);
     if (key.length) {
       setResultSize(recipes[key[0]] === null

@@ -22,7 +22,6 @@ function DrinksIngredients() {
               role="presentation"
             >
               <img
-                width="400px"
                 data-testid={ `${index}-card-img` }
                 src={ image }
                 alt={ name }
