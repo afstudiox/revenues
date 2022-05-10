@@ -36,8 +36,6 @@ input {
 button {
   border: none;
   border-radius: 4px;
-  /* reduzi o padding para retornar os botões ao tamanho original*/
-  padding: 50px;
 }
 
 .generalContainer {
