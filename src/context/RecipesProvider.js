@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
-import { requestByAll,
+import {
+  requestByAll,
   requestFilterCategory,
   requestRandomCocktail,
   requestRandomMeal,
@@ -12,12 +13,23 @@ function RecipesProvider({ children }) {
   const [recipes, setRecipes] = useState({});
   const [recipesType, setRecipesType] = useState('meal');
   const [resultSize, setResultSize] = useState(0);
+  const [recipeDetail, setRecipeDetail] = useState({});
+  const [recommended, setRecommended] = useState({});
   const [buttonText, setButtonText] = useState([]);
   const [location, setLocation] = useState('');
   const [randomFoods, setRandomFoods] = useState({});
   const [randomDrinks, setRandomDrinks] = useState({});
   const [arrayCategory, setArrayCategory] = useState([]);
   const [render, setRender] = useState('');
+  const [favoriteRecipe, setFavoriteRecipe] = useState({
+    id: '',
+    type: '',
+    nationality: '',
+    category: '',
+    alcoholicOrNot: '',
+    name: '',
+    image: '',
+  });
 
   useEffect(() => {
     const request = async () => {
@@ -56,6 +68,7 @@ function RecipesProvider({ children }) {
     // colocar estados e funções para os filhos aqui
     recipes,
     buttonText,
+    favoriteRecipe,
     location,
     handleStandard,
     randomFoods,
@@ -67,6 +80,11 @@ function RecipesProvider({ children }) {
     setRender,
     setButtonText,
     recipesType,
+    recipeDetail,
+    recommended,
+    setFavoriteRecipe,
+    setRecommended,
+    setRecipeDetail,
     setRecipes,
     setRecipesType,
     resultSize,

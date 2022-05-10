@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import Styles from '../css/CardRecipes.module.css';
+import Styles from '../css/CardRecommendations.module.css';
+import './CardRecommendations.css';
 // import RecipesContext from '../context/RecipesContext';
 
-function CardRecipes(props) {
+function CardRecommendations(props) {
   const { recipe, index } = props;
   const { location: { pathname } } = useHistory();
 
@@ -34,21 +35,22 @@ function CardRecipes(props) {
     <Link to={ path }>
       <section
         key={ index }
-        data-testid={ `${index}-recipe-card` }
         className={ Styles.container }
       >
         <img
-          data-testid={ `${index}-card-img` }
+          data-testid={ `${index}-recomendation-card` }
           src={ thumb }
           alt={ name }
+          width="170px"
+          className="recommendation-image"
         />
-        <p data-testid={ `${index}-card-name` }>{ name }</p>
+        <p data-testid={ `${index}-recomendation-title` }>{ name }</p>
       </section>
     </Link>
   );
 }
 
-CardRecipes.propTypes = {
+CardRecommendations.propTypes = {
   strDrinkThumb: PropTypes.string.isRequired,
   strDrink: PropTypes.string.isRequired,
   strMealThumb: PropTypes.string.isRequired,
@@ -57,4 +59,4 @@ CardRecipes.propTypes = {
   recipe: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
-export default CardRecipes;
+export default CardRecommendations;
