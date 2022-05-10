@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+
 import RecipesContext from '../../context/RecipesContext';
 import { requestByAll, requestRecipeDetail } from '../../services/API';
 import CardButtonShareAndFav from '../CardButtonShareAndFav';
@@ -95,7 +96,14 @@ function FoodsRecipes() {
               />))
             }
             <p data-testid="instructions">{detailsRecipeArray[0][0].strInstructions}</p>
-            <button type="submit" data-testid="finish-recipe-btn"> Finish Recipe</button>
+            <Link to="/done-recipes">
+              <button
+                type="submit"
+                data-testid="finish-recipe-btn"
+              >
+                Finish Recipe
+              </button>
+            </Link>
           </>
         )
       }

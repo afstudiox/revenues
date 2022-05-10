@@ -34,7 +34,7 @@ function Login() {
     <div className={ styles.container }>
       <form>
         {/* // Requisitos 2,3 e 4 */}
-        <div className={ styles.icon }><BiFoodMenu /></div>
+        {<div className={ styles.icon }><BiFoodMenu /></div>}
         <h3>LOGIN</h3>
         <label htmlFor="email">
           {/* Email: [CSS - USAR SOMENTE PLACEHOLDER] */}
