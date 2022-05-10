@@ -24,7 +24,7 @@ function Login() {
     localStorage.setItem('cocktailsToken', 1);
     localStorage.setItem('user', JSON.stringify(email));
     if (localStorage.setItem('doneRecipes', []) === null) {
-      localStorage.setItem('doneRecipes', []);
+      localStorage.setItem('doneRecipes', JSON.stringify([]));
     }
     localStorage.setItem('favoriteRecipes', JSON.stringify([]));
     localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
