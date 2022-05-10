@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import {
+  explorerFoodsNationality,
   requestByAll,
   requestByIngredients,
   requestFilterCategory,
@@ -11,7 +12,9 @@ import {
   screenDrinksImageIngredients,
   screenDrinksIngredients,
   screenFoodsImageIngredients,
-  screenFoodsIngredients } from '../services/API';
+  screenFoodsIngredients,
+  searchExploreNationality,
+} from '../services/API';
 import RecipesContext from './RecipesContext';
 
 function RecipesProvider({ children }) {
@@ -43,11 +46,15 @@ function RecipesProvider({ children }) {
   const [ingredientsDrinks, setIngredientsDrinks] = useState(
     [],
   );
+  const [explorerNationality, setExplorerNationality] = useState([]);
+  const [foodsNatinality, setFoodsNationality] = useState([]);
 
   const handleNameIngredientMeal = async ({ target }) => {
     const { innerText } = target.nextElementSibling;
     setRecipes(await requestByIngredients('meal', innerText));
   };
+
+  console.log(recipes);
 
   const handleNameIngredientDrink = async ({ target }) => {
     const { innerText } = target.nextElementSibling;
@@ -64,6 +71,22 @@ function RecipesProvider({ children }) {
   useEffect(() => {
     const request = async () => {
       setRandomDrinks(await requestRandomCocktail());
+    };
+    request();
+  }, []);
+
+  const handleArea = async ({ target }) => {
+    const { value } = target;
+    if (value === 'All') {
+      setFoodsNationality(await requestByAll('meal'));
+    } else {
+      setFoodsNationality(await searchExploreNationality(value));
+    }
+  };
+
+  useEffect(() => {
+    const request = async () => {
+      setFoodsNationality(await requestByAll('meal'));
     };
     request();
   }, []);
@@ -111,6 +134,16 @@ function RecipesProvider({ children }) {
     iDrinks();
   }, []);
 
+  useEffect(() => {
+    const request = async () => {
+      const exp = await explorerFoodsNationality();
+      setExplorerNationality(exp !== undefined ? exp.meals : []);
+    };
+    request();
+  }, []);
+
+  console.log(explorerNationality);
+
   const handleCategory = async ({ target }) => {
     const { innerText } = target;
     if (!arrayCategory.includes(innerText)) {
@@ -130,12 +163,15 @@ function RecipesProvider({ children }) {
     location,
     handleStandard,
     handleNameIngredientDrink,
+    handleArea,
     randomFoods,
     randomDrinks,
     handleCategory,
+    foodsNatinality,
     handleNameIngredientMeal,
     handleRequest,
     setLocation,
+    explorerNationality,
     render,
     setRender,
     ingredientsFoods,

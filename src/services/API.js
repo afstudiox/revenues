@@ -83,3 +83,15 @@ export const screenDrinksImageIngredients = (imageDrink) => {
   const url = `https://www.thecocktaildb.com/images/ingredients/${imageDrink}-Small.png`;
   return url;
 };
+
+export const explorerFoodsNationality = () => {
+  const request = fetch('https://www.themealdb.com/api/json/v1/1/list.php?a=list')
+    .then((response) => response.json());
+  return request;
+};
+
+export const searchExploreNationality = async (area) => {
+  const request = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${area}`)
+    .then((response) => response.json());
+  return request;
+};

@@ -19,6 +19,7 @@ import FoodsRecipes from './components/foods/FoodsRecipes';
 import Login from './components/Login';
 import Profile from './components/Profile';
 import RecipesProvider from './context/RecipesProvider';
+import NotFound from './components/NotFound';
 
 function App() {
   return (
@@ -65,6 +66,7 @@ function App() {
             <Route path="/profile" component={ Profile } />
             <Route path="/done-recipes" component={ DoneRecipes } />
             <Route path="/favorite-recipes" component={ FavoriteRecipes } />
+            <Route path="*" component={ NotFound } />
           </Switch>
         </BrowserRouter>
       </div>
