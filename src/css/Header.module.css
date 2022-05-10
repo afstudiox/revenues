@@ -23,19 +23,20 @@
 }
 
 .category {
-  background-color: var(--main-color);
+  background-color: var(--white-color);
   display: flex;
   flex-flow: row wrap;
   font-size: 16px;
+  font-weight: 700;
   justify-content: space-around;
   padding: 4px;
   width: 100%;
 }
 
 .category button {
-  background-color: var(--dark-color);
+  background-color: var(--ligth-color);
   border: none;
-  color: var(--contrast-color);
+  color: var(--dark-color);
   font-size: 12px;
   margin: 4px;
   padding: 5px;
@@ -43,7 +44,7 @@
 }
 
 .searchBar {
-  background-color: var(--main-color);
+  background-color: var(--white-color);
   display: flex;
   flex-flow: row wrap;
   margin: 0;
@@ -51,14 +52,44 @@
 }
 
 .searchInput {
-  background-color: var(--ligth-color);
-  border: 1px solid var(--constrast-font);
+  background-color: var(--white-color);
+  border: 2px solid var(--main-color);
   border-radius: 0;
+  height: 32px;
   margin: 0 8px;
-  width: 75%;
+  margin-left: 12px;
+  width: 70%;
 }
 
 .searchBar button {
-  background-color: var(--dark-color);
-  color: var(--main-color);
+  background-color: var(--ligth-color);
+  color: var(--dark-color);
+  height: 32px;
+  width: 20%;
 }
+
+.radios {
+  align-items: center;
+  border-bottom: solid 1px var(--main-color);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 8px 0;
+  width: 100%;
+}
+
+.radios input {
+  margin-right: 4px;
+}
+
+.containerExplorer {
+  background-color: var(--contrast-color);
+  color: var(--dark-color);
+  display: flex;
+  justify-content: space-between;
+  padding: 8px;
+  position: fixed;
+  top: 0;
+  width: 360px;
+}
+

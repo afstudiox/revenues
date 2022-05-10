@@ -7,7 +7,7 @@ import profileIcon from '../../images/profileIcon.svg';
 function Header({ title }) {
   return (
     // Requisito 9
-    <header className={ styles.container }>
+    <header className={ styles.containerExplorer }>
       <Link to="/profile">
         <input
           type="image"
