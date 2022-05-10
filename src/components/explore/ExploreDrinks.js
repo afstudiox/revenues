@@ -14,7 +14,7 @@ function ExploreDrinks() {
   console.log(id);
 
   return (
-    <div className={ style.container }>
+    <>
       <Header title="Explore Drinks" />
       <div className={ styles.container }>
         <Link to="/explore/drinks/ingredients">
@@ -35,7 +35,7 @@ function ExploreDrinks() {
         </Link>
       </div>
       <Footer />
-    </div>
+    </>
   );
 }
 
