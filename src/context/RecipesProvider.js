@@ -1,10 +1,16 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { requestByAll,
+  requestByIngredients,
   requestFilterCategory,
   requestRandomCocktail,
   requestRandomMeal,
-  requestTextButtonsMeals, requestTextButtonsMealsCocktail } from '../services/API';
+  requestTextButtonsMeals,
+  requestTextButtonsMealsCocktail,
+  screenDrinksImageIngredients,
+  screenDrinksIngredients,
+  screenFoodsImageIngredients,
+  screenFoodsIngredients } from '../services/API';
 import RecipesContext from './RecipesContext';
 
 function RecipesProvider({ children }) {
@@ -14,10 +20,27 @@ function RecipesProvider({ children }) {
   const [resultSize, setResultSize] = useState(0);
   const [buttonText, setButtonText] = useState([]);
   const [location, setLocation] = useState('');
+  const [ingredientsFoods, setIngredientsFoods] = useState(
+    [],
+  );
+  const [ingredientsDrinks, setIngredientsDrinks] = useState(
+    [],
+  );
   const [randomFoods, setRandomFoods] = useState({});
   const [randomDrinks, setRandomDrinks] = useState({});
   const [arrayCategory, setArrayCategory] = useState([]);
   const [render, setRender] = useState('');
+  const [textRender, setTextRender] = useState('');
+
+  const handleNameIngredientMeal = async ({ target }) => {
+    const { innerText } = target.nextElementSibling;
+    setRecipes(await requestByIngredients('meal', innerText));
+  };
+
+  const handleNameIngredientDrink = async ({ target }) => {
+    const { innerText } = target.nextElementSibling;
+    setTextRender(innerText);
+  };
 
   useEffect(() => {
     const request = async () => {
@@ -33,8 +56,8 @@ function RecipesProvider({ children }) {
     request();
   }, []);
 
-  const handleRequest = ({ target }) => {
-    console.log(target.name);
+  const handleRequest = (/* { target } */) => {
+    /* console.log(target.name); */
   };
 
   const handleStandard = async () => {
@@ -61,10 +84,14 @@ function RecipesProvider({ children }) {
     randomFoods,
     randomDrinks,
     handleCategory,
+    handleNameIngredientMeal,
+    handleNameIngredientDrink,
     handleRequest,
     setLocation,
     render,
     setRender,
+    ingredientsFoods,
+    ingredientsDrinks,
     setButtonText,
     recipesType,
     setRecipes,
@@ -72,6 +99,39 @@ function RecipesProvider({ children }) {
     resultSize,
     setResultSize,
   };
+
+  useEffect(() => {
+    const doze = 12;
+    const iFoods = async () => {
+      const iFood = await screenFoodsIngredients();
+      iFood.forEach(({ strIngredient }, index) => {
+        if (index < doze) {
+          setIngredientsFoods(
+            (prevState) => [...prevState,
+              { name: strIngredient, image: screenFoodsImageIngredients(strIngredient) }],
+          );
+        }
+      });
+    };
+    iFoods();
+  }, []);
+
+  useEffect(() => {
+    const doze = 12;
+    const iDrinks = async () => {
+      const iDrink = await screenDrinksIngredients();
+      iDrink.forEach(async ({ strIngredient1 }, index) => {
+        if (index < doze) {
+          setIngredientsDrinks(
+            (prevState) => [...prevState,
+              { name: strIngredient1,
+                image: screenDrinksImageIngredients(strIngredient1) }],
+          );
+        }
+      });
+    };
+    iDrinks();
+  }, []);
 
   useEffect(() => {
     const key = Object.keys(recipes);
@@ -84,11 +144,15 @@ function RecipesProvider({ children }) {
 
   useEffect(() => {
     const setRec = async () => {
-      const all = await requestByAll(recipesType);
-      setRecipes(all);
+      if (textRender !== '' && recipesType === 'cocktail') {
+        setRecipes(await requestByIngredients('cocktail', textRender));
+      } else {
+        const all = await requestByAll(recipesType);
+        setRecipes(all);
+      }
     };
     setRec();
-  }, [recipesType]);
+  }, [textRender, recipesType]);
 
   useEffect(() => {
     const request = async () => {

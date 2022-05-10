@@ -3,7 +3,6 @@
 // const API_URL_FIRST_LETTER = 'https://www.themealdb.com/api/json/v1/1/search.php?f=';
 
 export const requestByIngredients = async (recipesType, ingredient) => {
-  console.log(`https://www.the${recipesType}db.com/api/json/v1/1/filter.php?i=${ingredient}`);
   const request = await fetch(`https://www.the${recipesType}db.com/api/json/v1/1/filter.php?i=${ingredient}`);
   const response = await request.json();
   return response;
@@ -55,4 +54,26 @@ export const requestRandomCocktail = async () => {
   const request = await fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php')
     .then((response) => response.json());
   return request;
+};
+
+export const screenFoodsIngredients = async () => {
+  const request = await fetch('https://www.themealdb.com/api/json/v1/1/list.php?i=list')
+    .then((response) => response.json());
+  return request.meals;
+};
+
+export const screenFoodsImageIngredients = (imageFood) => {
+  const url = `https://www.themealdb.com/images/ingredients/${imageFood}-Small.png`;
+  return url;
+};
+
+export const screenDrinksIngredients = async () => {
+  const request = await fetch('https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list')
+    .then((response) => response.json());
+  return request.drinks;
+};
+
+export const screenDrinksImageIngredients = (imageDrink) => {
+  const url = `https://www.thecocktaildb.com/images/ingredients/${imageDrink}-Small.png`;
+  return url;
 };
