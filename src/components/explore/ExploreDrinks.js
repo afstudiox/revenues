@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import RecipesContext from '../../context/RecipesContext';
 import Footer from '../Footer';
 import Header from '../header/Header';
+import style from '../../css/Explorer.module.css';
 
 function ExploreDrinks() {
   const { randomDrinks } = useContext(RecipesContext);
@@ -13,7 +14,7 @@ function ExploreDrinks() {
   console.log(id);
 
   return (
-    <>
+    <div className={ style.container }>
       <Header title="Explore Drinks" />
       <Link to="/explore/drinks/ingredients">
         <button
@@ -32,7 +33,7 @@ function ExploreDrinks() {
         </button>
       </Link>
       <Footer />
-    </>
+    </div>
   );
 }
 
