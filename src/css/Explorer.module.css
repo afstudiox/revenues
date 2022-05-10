@@ -8,10 +8,6 @@
 }
 
 .container button {
-  width: 360px;
-}
-
-.container button {
   background-color: var(--ligth-color);
   height: 80px;
   margin: 8px;
