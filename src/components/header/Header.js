@@ -13,7 +13,7 @@ function Header({ title }) {
           type="image"
           data-testid="profile-top-btn"
           className={ styles.icon }
-          img
+          img="true"
           src={ profileIcon }
           alt="Profile"
         />
