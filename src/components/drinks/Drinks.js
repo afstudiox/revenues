@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import RecipesContext from '../../context/RecipesContext';
-import Styles from '../../css/Drinks.module.css';
+import styles from '../../css/Drinks.module.css';
 import CardRecipes from '../CardRecipes';
 import Footer from '../Footer';
 import HeaderSearch from '../header/HeaderSearch';
@@ -13,7 +13,7 @@ function Drinks() {
   return (
     <>
       <HeaderSearch title="Drinks" />
-      <div className={ Styles.container }>
+      <div className={ styles.container }>
         {type.length
           && recipes[type[0]] !== null
           && recipes[type[0]].filter((_recipe, index) => index <= magic)

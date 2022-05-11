@@ -1,8 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import Styles from '../css/CardRecommendations.module.css';
-import './CardRecommendations.css';
+import styles from '../css/CardRecommendations.module.css';
 // import RecipesContext from '../context/RecipesContext';
 
 function CardRecommendations(props) {
@@ -35,7 +34,7 @@ function CardRecommendations(props) {
     <Link to={ path }>
       <section
         key={ index }
-        className={ Styles.container }
+        className={ styles.container }
       >
         <img
           data-testid={ `${index}-recomendation-card` }
