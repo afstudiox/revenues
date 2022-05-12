@@ -7,6 +7,18 @@
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
 }
 
+.clicked {
+  text-decoration: line-through;
+} 
+
+/* body {
+  background-image: url(./images/patternFood.jpg);
+  background-repeat: repeat;
+  background-size: 400px;
+  z-index: 1;
+  opacity: 0.6;
+} */
+=======
 :root{
   --main-color: #E9EDDE;
   --dark-color: #4D4C4C;

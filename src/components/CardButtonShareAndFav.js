@@ -22,7 +22,9 @@ function CardButtonShareAndFav() {
   // const { recipeDetail } = useContext(RecipesContext);
   // const lazaro = false;
   function copyToClipBoard() {
-    copy(`http://localhost:3000${pathname}`);
+    const path = pathname.split('/');
+    console.log(path);
+    copy(`http://localhost:3000/${path[1]}/${path[2]}`);
     setShareClicked(true);
   }
 

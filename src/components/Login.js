@@ -24,7 +24,7 @@ function Login() {
     localStorage.setItem('cocktailsToken', 1);
     localStorage.setItem('user', JSON.stringify(email));
     if (localStorage.setItem('doneRecipes', []) === null) {
-      localStorage.setItem('doneRecipes', []);
+      localStorage.setItem('doneRecipes', JSON.stringify([]));
     }
     localStorage.setItem('favoriteRecipes', JSON.stringify([]));
     localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
@@ -34,7 +34,7 @@ function Login() {
     <div className={ styles.container }>
       <form>
         {/* // Requisitos 2,3 e 4 */}
-        <div className={ styles.icon }><BiFoodMenu /></div>
+        {<div className={ styles.icon }><BiFoodMenu /></div>}
         <h3>LOGIN</h3>
         <label htmlFor="email">
           {/* Email: [CSS - USAR SOMENTE PLACEHOLDER] */}
