@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import RecipesContext from '../../context/RecipesContext';
 import Footer from '../Footer';
 import styles from '../../css/Foods.module.css';
-/* import HeaderSearch from '../header/HeaderSearch'; */
+import HeaderSearch from '../header/HeaderSearch';
 
 /* <select id="cars">
   <option value="volvo">Volvo</option>
@@ -23,7 +23,7 @@ function FoodsNationalities() {
 
   return (
     <>
-      {/* <HeaderSearch title="Explore Nationalities" /> */}
+      <HeaderSearch title="Explore Nationalities" />
       <select
         onChange={ handleArea }
         data-testid="explore-by-nationality-dropdown"
