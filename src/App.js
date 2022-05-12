@@ -68,10 +68,10 @@ function App() {
               path="/explore/foods/nationalities"
               component={ FoodsNationalities }
             />
-            <Route path="/profile" component={ Profile } />
-            <Route path="/done-recipes" component={ DoneRecipes } />
-            <Route path="/favorite-recipes" component={ FavoriteRecipes } />
-            <Route path="*" component={ NotFound } />
+            <Route exact path="/profile" component={ Profile } />
+            <Route exact path="/done-recipes" component={ DoneRecipes } />
+            <Route exact path="/favorite-recipes" component={ FavoriteRecipes } />
+            <Route exact path="*" component={ NotFound } />
           </Switch>
         </BrowserRouter>
       </div>
