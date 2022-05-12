@@ -2,11 +2,11 @@
   background-color: var(--bege-color);
   display: flex;
   flex-direction: column;
-  max-height: 100vh;
+  height: 100vh;
 }
 
 .container > img {
-  width: 100%;
+  width: 360px;
 }
 
 .recipe {
@@ -14,6 +14,7 @@
   display: flex;
   flex-flow: column;
   justify-content: center;
+  width: 360px;
 }
 
 .recipe h2 {
@@ -38,7 +39,8 @@
 .buttons {
   align-items: center;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  padding: 16px 0;
 }
 
 .btnShare button {
@@ -60,13 +62,75 @@
 
 .ingredients {
   background-color: var(--bege-color);
-  margin: 10px 0;
-  padding: 0 12px;
+  padding: 10px 18px;
+  width: 360px;
+}
+
+.ingredients li {
+  margin-left: 12px;
+}
+
+.ingredients h3 {
+  font-size: 22px;
+  text-align: center;
 }
 
 .instructions {
-  background-color: var(--white-color);
-  margin: 10px 0;
-  padding: 0 12px;
+  background-color: var(--main-color);
+  padding: 10px 12px;
   text-align: justify;
+  width: 360px;
+}
+
+.instructions h3 {
+  font-size: 22px;
+  text-align: center;
+}
+
+.video {
+  background-color: var(--bege-color);
+}
+
+.video iframe {
+  border: none;
+  height: 220px;
+  width: 360px;
+}
+
+.recommend {
+  background-color: var(--bege-color);
+  padding: 16px 12px;
+  width: 360px;
+}
+
+.recommend h3 {
+  font-size: 22px;
+  padding-bottom: 12px;
+  text-align: center;
+}
+
+.recommend img {
+  border-radius: 8px 8px 0 0;
+  width: 95%;
+}
+
+.recommend p {
+  background-color: var(--main-color);
+  border-radius: 0 0 8px 8px;
+  color: var(--dark-color);
+  text-align: center;
+  width: 95%;
+}
+
+.btnStart {
+  background-color: var(--main-color);
+  display: flex;
+  justify-content: center;
+  padding: 15px 0;
+}
+
+.btnStart button {
+  background-color: var(--main-color);
+  font-size: 24px;
+  width: 100%;
 }

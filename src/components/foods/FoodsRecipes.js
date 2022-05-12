@@ -6,7 +6,6 @@ import CardButtonShareAndFav from '../CardButtonShareAndFav';
 import IngredientsList from '../IngredientsList';
 import Recommendations from '../Recommendations';
 import styles from '../../css/Recipes.module.css';
-import './foodsRecipes.css';
 
 function FoodsRecipes() {
   const { location: { pathname } } = useHistory();
@@ -112,9 +111,9 @@ function FoodsRecipes() {
 
               </h5
               >
-              <div className={ styles.buttons }>
-                <CardButtonShareAndFav />
-              </div>
+            </div>
+            <div className={ styles.buttons }>
+              <CardButtonShareAndFav />
             </div>
             <div className={ styles.ingredients }>
               <h3>Ingredients</h3>
@@ -132,29 +131,34 @@ function FoodsRecipes() {
             <div className={ styles.instructions }>
               <h3>Instructions</h3>
               <p data-testid="instructions">{detailsRecipeArray[0][0].strInstructions}</p>
+            </div>
+            <div className={ styles.video }>
               <iframe
-                width="300"
-                height="220"
                 src={ youtubeEmbed }
                 title={ detailsRecipeArray[0][0].strMeal }
                 data-testid="video"
               />
             </div>
             {/* Card de drinks recomendadas */}
-            <Recommendations />
+            <div className={ styles.recommend }>
+              <h3>Recommendations</h3>
+              <Recommendations />
+            </div>
             {/* <p data-testid="0-recomendation-card" /> */}
-            <Link to={ `${pathname}/in-progress` }>
-              <button
-                className="start-recipe"
-                type="button"
-                data-testid="start-recipe-btn"
-              >
-                {
-                  recipeInProgress()
-                }
-                {/* Start Recipe */}
-              </button>
-            </Link>
+            <div className={ styles.btnStart }>
+              <Link to={ `${pathname}/in-progress` }>
+                <button
+                  // className="start-recipe"
+                  type="button"
+                  data-testid="start-recipe-btn"
+                >
+                  {
+                    recipeInProgress()
+                  }
+                  {/* Start Recipe */}
+                </button>
+              </Link>
+            </div>
           </div>
         )
       }
