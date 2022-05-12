@@ -1,21 +1,27 @@
 .container {
   border-radius: 16px;
   width: 163px;
+  padding: 8px;
 }
 
 .container img {
-  border-radius: 8px 8px 0 0;
+  border-radius: 12px 12px 0 0;
+  border: solid 1px var(--contrast-color);
+  border-bottom: none;
   width: 100%;
 }
 
 .container p {
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
-  border-radius: 0 0 8px 8px;
+  /* border-radius: 0 0 8px 8px; */
   display: -webkit-box;
   overflow: hidden;
   text-align: center;
   text-overflow: ellipsis;
   width: 100%;
+  background-color: var(--main-color);
+  border: solid 1px var(--contrast-color);
+  color: var(--contrast-color);
 }
 

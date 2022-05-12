@@ -1,6 +1,6 @@
 .container {
   align-items: flex-start;
-  background-color: var(--bege-color);
+  /* background-color: var(--bege-color); */
   display: flex;
   flex-flow: row wrap;
   font-size: 16px;

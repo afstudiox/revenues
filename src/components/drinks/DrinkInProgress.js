@@ -4,6 +4,7 @@ import RecipesContext from '../../context/RecipesContext';
 import { requestByAll, requestRecipeDetail } from '../../services/API';
 import CardButtonShareAndFav from '../CardButtonShareAndFav';
 import IngredientsListCheckBox from '../IngredientsListCheckbox';
+import styles from '../../css/Recipes.module.css';
 
 function DrinksRecipes() {
   const [ingredientsList, setIngredientsList] = useState([]);
@@ -68,39 +69,60 @@ function DrinksRecipes() {
   }, [recipeDetail]);
 
   return (
-    <div>
+    <div className={ styles.container }>
       {
         detailsRecipeArray.length === 1
         && (
-          <div className="container">
+          <>
             <img
               src={ detailsRecipeArray[0][0].strDrinkThumb }
               alt={ detailsRecipeArray[0][0].strDrink }
               data-testid="recipe-photo"
               className="image-drink"
             />
-            <h2 data-testid="recipe-title">{detailsRecipeArray[0][0].strDrink}</h2>
-            <CardButtonShareAndFav />
-            <h5 data-testid="recipe-category">{detailsRecipeArray[0][0].strAlcoholic}</h5>
-            <h3>Ingredients</h3>
-            {
-              ingredientsList.map((element, index) => (<IngredientsListCheckBox
-                element={ element }
-                index={ index }
-                measureList={ measureList }
-                key={ index }
-              />))
-            }
-            <p data-testid="instructions">{detailsRecipeArray[0][0].strInstructions}</p>
-            <Link to="/done-recipes">
-              <button
-                type="submit"
-                data-testid="finish-recipe-btn"
+            <div className={ styles.recipe }>
+              <h2 data-testid="recipe-title">{detailsRecipeArray[0][0].strDrink}</h2>
+              <h5
+                data-testid="recipe-category"
               >
-                Finish Recipe
-              </button>
-            </Link>
-          </div>
+                {detailsRecipeArray[0][0].strAlcoholic}
+
+              </h5>
+            </div>
+
+            <div className={ styles.buttons }>
+              <CardButtonShareAndFav />
+            </div>
+
+            <div className={ styles.ingredients }>
+              <h3>Ingredients</h3>
+              {
+                ingredientsList.map((element, index) => (<IngredientsListCheckBox
+                  element={ element }
+                  index={ index }
+                  measureList={ measureList }
+                  key={ index }
+                />))
+              }
+            </div>
+
+            <div className={ styles.instructions }>
+              <h3>Instructions</h3>
+              <p data-testid="instructions">{detailsRecipeArray[0][0].strInstructions}</p>
+            </div>
+
+            <div className={ styles.btnDone }>
+              <Link to="/done-recipes">
+                <button
+                  type="submit"
+                  data-testid="finish-recipe-btn"
+                >
+                  Finish Recipe
+                </button>
+              </Link>
+            </div>
+
+          </>
         )
       }
     </div>

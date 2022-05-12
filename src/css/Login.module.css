@@ -1,6 +1,8 @@
 .container {
+  background-blend-mode: overlay;
   background-color: var(--main-color);
-  background-size: 500px;
+  background-image: url('../images/patternFood.jpg');
+  background-size: 300px;
   display: flex;
   flex-direction: row;
   height: 100vh;

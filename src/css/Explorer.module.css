@@ -7,7 +7,8 @@
 }
 
 .container button {
-  background-color: var(--ligth-color);
+  background-color: var(--main-color);
+  border: solid 1px var(--contrast-color);
   border-radius: 4px;
   color: var(--dark-color);
   height: 80px;
