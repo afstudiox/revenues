@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/revenues/static/css/main.69c9c16a.css",
+    "main.js": "/revenues/static/js/main.7eb3ae49.js",
+    "static/media/patternFood.jpg": "/revenues/static/media/patternFood.96a2fd2ac7dbdc772f22.jpg",
+    "static/media/exploreIcon.svg": "/revenues/static/media/exploreIcon.076346236f69318885d7f53b65f0e4c7.svg",
+    "static/media/mealIcon.svg": "/revenues/static/media/mealIcon.40029e7f1422ba5a1bf1c10fa4f59030.svg",
+    "static/media/shareIcon.svg": "/revenues/static/media/shareIcon.87def1bd1dff9af9263f046c3b9bd31a.svg",
+    "static/media/profileIcon.svg": "/revenues/static/media/profileIcon.44eb3608f431845fe2fc2d2a23d758ae.svg",
+    "static/media/whiteHeartIcon.svg": "/revenues/static/media/whiteHeartIcon.2b822118952dc5140129c6349fcd0472.svg",
+    "static/media/searchIcon.svg": "/revenues/static/media/searchIcon.7353564d025de989f86f66ecb0202a04.svg",
+    "static/media/blackHeartIcon.svg": "/revenues/static/media/blackHeartIcon.083cb006913d197c95857ebfa2161db7.svg",
+    "static/media/drinkIcon.svg": "/revenues/static/media/drinkIcon.efc0d3c156e5da73e44a826c8d67b142.svg",
+    "index.html": "/revenues/index.html",
+    "main.69c9c16a.css.map": "/revenues/static/css/main.69c9c16a.css.map",
+    "main.7eb3ae49.js.map": "/revenues/static/js/main.7eb3ae49.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.69c9c16a.css",
+    "static/js/main.7eb3ae49.js"
+  ]
+}
