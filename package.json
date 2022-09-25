@@ -41,7 +41,7 @@
     "lint": "eslint --no-inline-config --no-error-on-unmatched-pattern -c .eslintrc.json . --ext .js,.jsx",
     "lint:styles": "npx stylelint '**/*.css'",
     "pre-deploy": "npm run build",
-    "deploy": "gh-paghes -d build"
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
