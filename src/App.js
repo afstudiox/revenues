@@ -17,15 +17,15 @@ import FoodInProgress from './components/foods/FoodInProgress';
 import Foods from './components/foods/Foods';
 import FoodsRecipes from './components/foods/FoodsRecipes';
 import Login from './components/Login';
+import NotFound from './components/NotFound';
 import Profile from './components/Profile';
 import RecipesProvider from './context/RecipesProvider';
-import NotFound from './components/NotFound';
 
 function App() {
   return (
     <RecipesProvider>
       <div className="generalContainer">
-        <BrowserRouter>
+        <BrowserRouter basename={ process.env.PUBLIC_URL }>
           <Switch>
             <Route exact path="/" component={ Login } />
             <Route exact path="/foods" component={ Foods } />
